@@ -1,0 +1,9 @@
+--ignore-dir=.sass-cache
+--ignore-dir=tmp
+--ignore-dir=build
+--ignore-dir=log
+--ignore-dir=kategorie-master
+--ignore-dir=kategorie-admin
+--ignore-dir=out/roxid/bower_components/jQuery.mmenu/demo/
+#--ignore-file=ext:ai
+#--ignore-file=ext:map

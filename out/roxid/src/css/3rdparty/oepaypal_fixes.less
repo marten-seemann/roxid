@@ -1,0 +1,67 @@
+.paypalExpressCheckoutDetailsBox {
+  float: right;
+  width: 190px;
+
+  .paypalExpressCheckoutMsg {
+    margin-left: 0;
+  }
+}
+
+.paypalExpressCheckoutBox {
+  border: 0;
+}
+
+.paypalHelpIcon {
+  position: static;
+  display: inline-block;
+  background-color: white;
+  color: @text-color;
+  border-radius: 0;
+  margin-left: 5px;
+
+  &.small {
+    display: block;
+    float: left;
+    margin-left: 0;
+    margin-right: 5px;
+  }
+
+  &:hover {
+    color: @text-color;
+    text-decoration: none;
+  }
+}
+
+
+
+.paypalExpressCheckoutMsg {
+  float: none;
+  z-index: 1;
+  margin-top: -7px;
+
+  .paypalHelpBox {
+    display: none;
+  }
+
+  .paypalHelpIcon {
+    left: 0;
+    margin-top: 2px;
+  }
+
+  .popover {
+    font-size: @font-size-small;
+    padding: 0;
+  }
+
+  input { // the checkbox asking if the cart should be transmitted to PayPal
+    // margin-left: 20px;
+    margin-right: 4px;
+  }
+}
+
+// hide Paypal Express Checkout in the top controls in the basket
+.z-checkout-controls-top {
+  .paypalExpressCheckoutBox {
+    display: none;
+  }
+}

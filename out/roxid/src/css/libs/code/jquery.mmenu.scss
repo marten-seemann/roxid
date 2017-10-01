@@ -1,0 +1,56 @@
+$transitionDuration: 0.25s;
+$mm_dimmedTextColor: rgba(#000, 0.6);
+
+// @import "../../../../bower_components/jQuery.mmenu/src/core/css/jquery.mmenu.all";
+@import "../../../../bower_components/jQuery.mmenu/src/core/css/jquery.mmenu";
+@import "../../../../bower_components/jQuery.mmenu/src/addons/css/jquery.mmenu.counters";
+@import "../../../../bower_components/jQuery.mmenu/src/addons/css/jquery.mmenu.iconpanels";
+@import "../../../../bower_components/jQuery.mmenu/src/addons/css/jquery.mmenu.navbars";
+@import "../../../../bower_components/jQuery.mmenu/src/extensions/css/jquery.mmenu.pageshadow";
+@import "../../../../bower_components/jQuery.mmenu/src/extensions/css/jquery.mmenu.positioning";
+@import "../../../../bower_components/jQuery.mmenu/src/extensions/css/jquery.mmenu.pagedim";
+
+
+html {
+  .mm-list {
+    li a {
+      padding-left: $mm_padding;
+
+      &:hover {
+        background-color: inherit;
+      }
+    }
+  }
+
+  .mm-vertical {
+    margin: 0;
+
+    .mm-panel.mm-vertical {
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+  }
+
+  &.mm-background .mm-page {
+    background: initial;
+  }
+}
+
+.mm-menu {
+  > .mm-navbar-bottom {
+    text-align: left;
+
+    > div {
+      padding-left: ($mm_listitemPadding + $mm_padding);
+    }
+
+    .lastrow {
+      border-top: 1px solid $mm_borderColor;
+      text-align: center
+    }
+
+    .fa {
+      margin-right: 5px;
+    }
+  }
+}

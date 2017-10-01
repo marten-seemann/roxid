@@ -1,0 +1,39 @@
+body {
+  letter-spacing: -0.2px;
+}
+
+.navbar {
+  @media @not-phone {
+    border-bottom: 2px solid @gray-lighter;
+    font-family: @font-family-sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  @media @phone {
+    font-size: 15px;
+    border-top: 1px solid @gray-lighter;
+  }
+}
+
+.navbar-nav {
+  letter-spacing: 0.3px;
+}
+
+.z-sidebarblock .z-sidebarcontent {
+  background-color: white;
+}
+
+.z-featured-list {
+  li:hover, li:hover + li {
+    a, a:hover, strong {
+      color: @gray-darker !important;
+    }
+  }
+}
+
+.navbar .btn-navbar {
+  &, &:hover {
+    background: @gray-dark;
+  }
+}

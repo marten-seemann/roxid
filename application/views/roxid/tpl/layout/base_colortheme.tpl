@@ -1,0 +1,7 @@
+[{if $productive_mode}]
+    [{oxstyle include="../build/css/bootstrap_"|cat:$colortheme|cat:".min.css"}]
+    [{oxstyle include="../build/css/theme_"|cat:$colortheme|cat:".min.css"}]
+[{else}]
+    [{oxstyle include="../build/css/bootstrap_"|cat:$colortheme|cat:".css"}]
+    [{oxstyle include="../build/css/theme_"|cat:$colortheme|cat:".css"}]
+[{/if}]

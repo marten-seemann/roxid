@@ -1,0 +1,2744 @@
+@import "../../bower_components/font-awesome/less/variables.less";
+@import "roxid_variables.less";
+@import "mixins.less";
+@import "oxid.less";
+
+@import "3rdparty/oepaypal_fixes.less";
+@import "3rdparty/tronet_sofortueberweisung.less";
+
+
+.clear {
+  .clearfix();
+}
+
+
+@media @phone {
+  .modal {
+    margin-top: 10px;
+  }
+}
+
+// Bootbox dialogs
+.modal.bootbox {
+  .modal-footer {
+    padding: 8px 10px;
+  }
+}
+.modal.bootbox-confirm {
+  .modal-dialog {
+    height: 100%;
+  }
+
+  .modal-content {
+    top: 30%;
+  }
+
+  .modal-body {
+    padding: 15px;
+  }
+}
+
+.modal-danger .modal-header {
+  background-color: @alert-danger-bg;
+  color: @alert-danger-text;
+  .border-top-radius(@border-radius-large);
+}
+
+// for Bootstrap form validation plugin
+form {
+  .form-group:not(.has-error) {
+    .help-block.with-errors {
+      margin: 0;
+    }
+  }
+
+  .help-block.with-errors {
+    margin-bottom: 0;
+    ul { margin: 0; }
+  }
+}
+
+@media @phone {
+  .pagination > ul {
+    > li {
+      a, span {
+        padding: 4px 11px;
+      }
+    }
+
+    > li.disabled {
+      a, span {
+        padding: 4px 9px;
+      }
+    }
+  }
+}
+
+.loadingfade {
+  background: white;
+  z-index : 5000;
+}
+.loadingiconbg {
+  background: url(../../img/loading_bg.png) no-repeat center center; // IE8 fallback
+  background: rgba(255, 255, 255, 0.1);
+  z-index : 5001;
+}
+.loadingicon {
+  background: url(../../img/loading.gif) no-repeat center center;
+  background-size: @loading-icon-size;
+  z-index : 5002;
+}
+
+// make the facebook comment plugin responsive, see http://stackoverflow.com/questions/6500424/is-it-possible-to-set-a-fluid-width-for-facebooks-social-plugins
+.fb-comments, .fb-facepile {
+  &, iframe[style] {
+    width: 100% !important;
+  }
+
+  &, span, &.fb_iframe_widget span iframe {
+    width: 100% !important;
+  }
+}
+
+.fbEnableButton {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+// submenu items in navbar
+.dropdown-submenu {
+  position: relative;
+
+  >.dropdown-menu{
+    top: 0;
+    left: 100%;
+    margin-top: -@border-radius-base;
+    margin-left: -1px;
+    border-radius: 0 @border-radius-base @border-radius-base @border-radius-base;
+  }
+
+  > a:after{
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+  }
+
+  &:hover {
+    > .dropdown-menu {
+      display:block;
+    }
+
+    a:after {
+      border-left-color: @dropdown-submenu-arrow-color;
+    }
+  }
+
+  &.pull-left {
+    float: none;
+
+    .dropdown-menu {
+      left: -100%;
+      margin-left: 10px;
+      border-radius: @border-radius-base 0 @border-radius-base @border-radius-base;
+    }
+  }
+}
+
+#z-cookie-note {
+  position: fixed;
+  z-index: 100001;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  background-color: @cookie-note-bg;
+  color: @cookie-note-color;
+  text-align: center;
+  line-height: 2.0;
+  padding: 5px 15px;
+
+  @media @phone {
+    font-size: @font-size-small;
+    line-height: (@font-size-small*1.3);
+
+    .close {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+
+.page-header {
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding-bottom: 0;
+
+  @media @phone {
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    @media @phone {
+      margin-top: 0px;
+      margin-bottom: 10px;
+    }
+  }
+
+  small {
+    @media @phone {
+      font-size: 16px;
+      display: block;
+    }
+  }
+}
+
+
+@media @phone {
+  h1 {
+    font-size: 27px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+}
+
+.dropdown.dropdown-menu-right {
+  display: inline-block;
+
+  // see https://github.com/twitter/bootstrap/issues/2045#issuecomment-4026681
+  .dropdown-menu:after {
+    left: auto;
+    right: 13px;
+  }
+
+  .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+
+}
+
+
+fieldset {
+  + fieldset {
+    margin-top: 20px;
+  }
+
+  legend {
+    margin-bottom: 0; // must be 0 due to  iOS browser bug, see http://stackoverflow.com/questions/5339161/legend-tag-and-chrome
+
+    + * { // fix for iOS browser bug, see http://stackoverflow.com/questions/5339161/legend-tag-and-chrome
+      -webkit-margin-top-collapse: separate;
+      margin-top: 10px !important;
+
+      @media @mobile-device {
+        margin-top: 7px !important;
+      }
+    }
+
+    + .control-group {
+      margin-top: 0;
+    }
+  }
+}
+
+
+address {
+  margin-bottom: 0;
+}
+
+.breadcrumb .divider {
+  margin: 0 5px;
+}
+
+
+table.dropdown-table {
+  th {
+    text-align: right;
+    padding-right: 5px;
+  }
+
+  th, td {
+    padding-top: 1px;
+    padding-bottom: 3px;
+  }
+}
+
+form {
+  margin: 0;
+}
+
+legend {
+  line-height: 28px;
+}
+
+
+.form-control {
+  &.input-small { width: 100px; }
+  &.input-mini { width: 80px; }
+  &.input-xmini { width: 65px; }
+  &.input-xxmini { width: 55px; }
+  &.input-xxxmini { width: 45px; }
+}
+
+
+#header {
+  .z-logo {
+    @media @phone {
+      margin-bottom: 10px;
+    }
+
+    @media @not-phone {
+      float: left;
+    }
+  }
+
+  @media @not-phone {
+    .z-header-row {
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+
+  .z-header-row-right {
+    margin-left: auto;
+    max-width: 300px;
+
+    @media @phone {
+      max-width: 450px;
+    }
+
+    form {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+
+.panelmenu-toggle {
+  &:focus, &:hover {
+    text-decoration: none;
+  }
+}
+
+#main {
+  margin-top: 10px;
+  padding-top: 5px;
+  background-color: @body-bg;
+}
+
+#z-headermenu {
+  margin-bottom: 10px;
+  box-shadow: 0px 3px 5px @shadow-color;
+
+  .dropdown-menu {
+    min-width: 130px;
+    left: -15px;
+  }
+
+  .dropdown {
+    @padding: 5px;
+    float: left;
+    padding: @padding 10px;
+    border-width: 0 0 1px 1px;
+    border-style: solid;
+    border-color: @border-color;
+    height: (2*@padding + @line-height-computed + 1px);
+
+    &:last-child {
+      border-width: 0 1px 1px 1px;
+    }
+
+    > a {
+      color: @text-color;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .z-header-login .dropdown-menu {
+    margin-left: @header-loginbox-left-margin;
+    min-width: @header-loginbox-min-width;
+  }
+
+  // login box in the box-header
+  .z-loginbox, .z-loginbox-facebook {
+    margin: 5px 10px;
+  }
+
+  .z-loginbox {
+    button, .btn {
+      margin-top: 5px;
+    }
+
+    .alert {
+      padding: 10px;
+    }
+  }
+
+  .z-loginbox-facebook {
+    > span {
+      float: left;
+      margin-right: 10px;
+    }
+  }
+}
+
+
+// make the dropdown open on hover, but not on touch devices
+.no-touch {
+  ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+  }
+  a.menu:after, .dropdown-toggle:after {
+    content: none;
+  }
+}
+
+.touch { // hide the caret in the navbar on devices with touchscreens
+  .navbar .dropdown .fa-caret-down {
+    display: none;
+  }
+}
+
+#navigation {
+  .navbar-inner {
+    padding: 0;
+  }
+
+  .navbar-header {
+    float: left;
+  }
+
+  .navbar-right {
+    margin-right: 0;
+  }
+
+  .navbar-toggle {
+    float: left;
+    margin-left: 5px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+
+    .z-navbar-menu {
+      margin-top: -2px;
+      margin-bottom: -2px;
+      color: @navbar-default-link-color;
+    }
+  }
+
+  i.fa-caret-down {
+    @media @phone {
+      display: none;
+    }
+  }
+
+  .navbar {
+    margin-bottom: 0px;
+  }
+
+  .navbar-inner {
+    border: 0;
+    border-radius: 0;
+
+    @media @phone {
+      padding-left: 5px;
+    }
+  }
+
+  .z-navbar-minibasket {
+    height: @navbar-height;
+
+    .z-basket-itemcounter {
+      @media @mobile-device {
+        float: left;
+      }
+    }
+
+    &.z-navbar-minibasket-iconlarge {
+      a {
+        height: @navbar-height;
+        vertical-align: middle;
+        padding-top: ((@navbar-height - @navbar-basket-icon-size) / 2);
+      }
+
+      .z-navbar-icon {
+        .fa {
+          font-size: @navbar-basket-icon-size;
+        }
+
+        .z-basket-itemcounter {
+          display: inline-block;
+        }
+
+        .z-basket-itemcount {
+          font-size: @navbar-basket-icon-counter-size;
+        }
+      }
+    }
+  }
+
+  .breadcrumb-label {
+    padding-left: 15px;
+  }
+
+  .breadcrumb {
+    margin: 0;
+    border: 0;
+    display: inline-block;
+    padding-left: 7px;
+    padding-top: 0;
+    margin-top: 8px;
+  }
+
+  .z-navbar-phone {
+    .navbar-nav {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    li {
+      float: left;
+    }
+
+    a {
+      padding-top: ((@navbar-height - @line-height-computed) / 2 - 1px);
+      height: @navbar-height;
+    }
+
+    .z-navbar-icon {
+      i.fa {
+        margin-right: 4px;
+        font-size: 22px;
+        float: left;
+      }
+    }
+  }
+
+  // make it possible to show the mobile navbar on tablets
+  .z-mobile-nav-on-tablet {
+    .navbar-toggle {
+      @media @mobile-device {
+        display: block;
+      }
+    }
+
+    .navbar-collapse {
+      @media @mobile-device {
+        display: none !important;
+      }
+    }
+  }
+}
+
+
+.z-category-tree {
+  margin: 0 0 15px 0;
+  padding-left: 0;
+  border: 1px solid @border-color;
+
+  a {
+    @padding: 6px;
+    display: block;
+    padding: @padding 4px;
+    color: @text-color;
+    height: (@line-height-computed + 2*@padding);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  a:hover, *:hover a, a:focus, *:focus a {
+    text-decoration:none;
+  }
+
+  .active, .exp {
+    > a {
+      font-weight: bold;
+    }
+  }
+
+  .icon, .placeholder {
+    display: inline-block;
+    width: 11px;
+    text-align: center;
+    color: @category-tree-icon-color;
+  }
+
+  ul {
+    margin-left: @category-tree-level-indentation;
+    font-size: @category-tree-subitem-font-size;
+  }
+
+  li:not(.exp):not(.exp-js) ul {
+    display: none;
+  }
+
+  .icon:after {
+    font-family: 'FontAwesome';
+    font-style: normal;
+    font-size: @category-tree-icon-font-size;
+  }
+
+  li:not(.exp) > a > i.icon:after {
+    content: @category-tree-icon-closed;
+  }
+
+  li.exp, li.exp-js {
+    > a > i.icon:after {
+      content: @category-tree-icon-open;
+    }
+  }
+}
+
+// Sidebar Block
+.z-sidebarblock {
+  margin-bottom: 15px;
+
+  .panel-heading, .panel-body {
+    padding: @sidebarbox-padding;
+  }
+
+  .z-ts-seal { // Trusted Shops logo
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .z-brand-icon {
+    text-align: center;
+
+    img {
+      margin: 0 auto;
+    }
+  }
+
+  .z-more {
+    float: right;
+    margin-top: 5px;
+    font-size: @font-size-small;
+  }
+
+  &.z-sidebar-productlist .panel-body {
+    padding: 0;
+
+    ul {
+      margin-bottom: 0;
+    }
+  }
+
+  &.z-recommendations-box {
+    .z-recommendations-picture {
+      text-align: center;
+
+      img {
+        max-width: 100px;
+      }
+    }
+  }
+}
+
+#adminBanner {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+#partnerBox .z-sidebarcontent img {
+  margin: 0 auto;
+}
+
+
+.z-category-description {
+  clear: both;
+  margin-bottom: 15px;
+}
+
+.z-category-picture {
+  margin-bottom: 10px;
+}
+
+
+// Subcategories in the main page
+.z-subcat-list {
+  .make-row(@category-box-col-padding);
+
+  > ul {
+    display: flex;
+    flex-wrap: wrap;
+
+    > li {
+      .make-xs-column((24 / 2), @category-box-col-padding);
+      .make-sm-column((24 / 3), @category-box-col-padding);
+      .make-lg-column((24 / 4), @category-box-col-padding);
+      margin-bottom: @category-box-col-padding;
+      display: flex;
+    }
+  }
+}
+
+.z-category-box {
+  border: 1px solid @border-color;
+  text-align: center;
+  min-height: 75px;
+  width: 100%;
+
+  li {
+    margin-bottom: 3px;
+
+    &.z-subcat-pic {
+      margin-bottom: 10px;
+    }
+  }
+
+  img {
+    display: inline;
+  }
+
+  h3 {
+    height: @category-box-title-height;
+    line-height: @category-box-title-height;
+    text-align: center;
+    margin: 0;
+    font-size: @category-box-title-fontsize;
+    font-weight: normal;
+    padding: 0 3px;
+  }
+}
+
+
+.owl-carousel {
+  position: relative;
+
+  .owl-item img {
+    width: auto;
+  }
+}
+
+
+.z-manufacturer-carousel {
+  img {
+    max-width: @manufacturer-slider-img-max-width;
+    max-height: @manufacturer-slider-img-max-height;
+    margin: 0 auto;
+  }
+
+  &.fat-nav {
+    border: 1px solid @border-color;
+
+    .owl-stage-outer {
+      padding: 20px 0;
+    }
+
+    .owl-nav {
+      @height: 60px;
+
+      .owl-next, .owl-prev {
+        position: absolute;
+        top: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: -(@height / 2);
+        height: @height;
+        width: 40px;
+        background-color: @gray;
+        color: white;
+
+        &:hover {
+          transition: background-color .3s;
+          background-color: #ea4848;
+        }
+      }
+    }
+
+    .owl-prev {
+      left: 0;
+    }
+
+    .owl-next {
+      right: 0;
+    }
+
+    .fade-left, .fade-right {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 120px;
+    }
+
+    .fade-left {
+      left: 0;
+      background: linear-gradient(to right, white, rgba(255,255,255,0));
+    }
+
+    .fade-right {
+      right: 0;
+      background: linear-gradient(to left, white, rgba(255,255,255,0));
+    }
+  }
+}
+
+
+
+#incVatMessage {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  font-size: 11px;
+  padding: 3px 10px;
+  background: white;
+  border-width: 1px 0 0 1px;
+  border-style: solid;
+  border-color: @border-color;
+  z-index: 9999;
+  opacity: @vat-message-opacity;
+
+  @media @phone {
+    padding: 2px 5px;
+    font-size: 9px;
+  }
+}
+
+footer {
+  margin-top: 40px;
+  padding-top: 35px;
+  background-color: @footer-bg;
+  color: @footer-text-color;
+  font-size: @footer-font-size;
+  border-top: 1px solid @border-color;
+
+  a {
+    color: @footer-link-color;
+
+    &:hover {
+      color: @footer-link-hover-color;
+    }
+  }
+
+  @media @phone {
+    margin-top: 20px;
+    padding-top: 15px;
+  }
+
+  .z-facebook, .z-deliveryinfo {
+    margin-bottom: 25px;
+    margin-right: 10px;
+
+    @media @phone {
+      margin-bottom: 7px;
+    }
+  }
+
+  .z-footer-lastrow {
+    text-align: center;
+  }
+
+  ul {
+    margin-left: 5px;
+    padding-left: 0;
+  }
+
+  dd {
+    margin-left: 0;
+  }
+
+  dl {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+
+#indexslider {
+  margin-bottom: 20px;
+}
+
+
+// Pager
+.z-pager {
+  width: 100%;
+  overflow: auto;
+
+  .z-pager-article {
+    text-transform: uppercase;
+  }
+}
+
+
+// general settings for price displays
+.z-productprices {
+  .z-productprice {
+    font-weight: bold;
+    font-size: 18px;
+
+    &, * {
+      white-space: nowrap;
+    }
+  }
+}
+
+.z-oldprice, .z-priceperunit {
+  font-size: @font-size-small;
+  line-height: @font-size-small;
+}
+
+.z-priceperunit .z-priceperunit-unit {
+  white-space: nowrap;
+}
+
+.z-vat-included {
+  margin-left: 1px;
+}
+
+.z-product-amountprice {
+  a {
+    color: @text-color;
+    text-decoration: none;
+  }
+
+  .popover {
+    min-width: 150px;
+  }
+
+  table {
+    margin-bottom: 5px;
+
+    th:last-child, td:last-child { // this is the cell where the price is wirtten
+      text-align: right;
+    }
+
+    th:first-child, td:first-child {
+      border-right: 1px solid @border-color;
+    }
+  }
+}
+
+// Product List Filters
+.z-productlist-controls {
+  margin-bottom: 10px;
+
+  .dropdown-menu {
+    min-width: 130px;
+  }
+}
+
+.z-productlist-viewoptions {
+  display: flex;
+  align-items: flex-end;
+  margin-left: auto;
+
+  > div {
+    float: left;
+    &:not(:first-child) {
+      margin-left: 20px;
+    }
+  }
+
+  .z-options {
+    display: inline-block;
+  }
+}
+
+.z-productlist-filter {
+  padding: 5px 10px;
+  margin-top: 7px;
+  border: 1px solid @border-color;
+  display: flex;
+
+  .z-attribute-filter {
+    min-width: 45%;
+  }
+
+  .z-attribute-filter-item:not(:last-child) {
+    td, th {
+      padding-bottom: 5px;
+    }
+  }
+}
+// End Product list filters
+
+// Pagination
+.z-productlist-pagination {
+  text-align: center;
+}
+
+.z-productlist-controls-top {
+  .pagination {
+    margin: 20px 0 0 0;
+
+    @media @phone {
+      margin-top: 10px;
+    }
+  }
+}
+
+.z-productlist-controls-bottom {
+  .pagination {
+    margin: 10px 0 0 0;
+  }
+}
+// End Pagination
+
+.z-productlist {
+  padding-left: 0;
+
+  .z-product-title {
+    h4 {
+      margin: 0;
+    }
+
+    a {
+      color: @text-color;
+    }
+  }
+}
+
+.z-productlist-line { // View: Line
+  .row {
+    position: relative;
+  }
+
+  > li {
+    border-bottom: 1px solid @border-color;
+    width: 100%;
+    padding: @productlist-line-item-padding 0;
+
+    .row {
+      height: @productlist-line-item-height;
+
+      @media @phone {
+        height: @productlist-line-item-height-phone;
+      }
+    }
+  }
+
+  .z-product-description {
+    height: (@productlist-line-item-height - 60px); // ugly, but without flexbox there is probably no better way
+
+    @media @phone {
+      height: (@productlist-line-item-height-phone - 40px);
+    }
+  }
+
+  .z-product-info, .z-productline-functions {
+    padding-top: 5px;
+  }
+
+  .z-productline-info {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .z-productline-functions {
+    position: static;
+  }
+
+  .z-productpicture {
+    img {
+      margin: 0 auto;
+      max-width: 100%;
+      max-height: @productlist-line-item-height;
+
+      @media @phone {
+        max-height: @productlist-line-item-height-phone;
+      }
+    }
+  }
+
+  .z-product-title {
+    margin-bottom: 4px;
+    max-height: (2*@line-height-computed);
+  }
+
+  .z-productprices, .z-priceperunit {
+    text-align: right;
+  }
+
+  .z-productlist-buttons {
+    margin-top: 5px;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    text-align: right;
+
+    .z-product-compare {
+      margin-bottom: 5px;
+
+      .btn {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .z-to-basket {
+    clear: both;
+
+    .input-group {
+      max-width: 235px;
+
+      @media @tablet {
+        max-width: 200px;
+      }
+    }
+  }
+}
+
+.z-productlist-grid { // View: Grid
+  .make-row(@productlist-grid-col-padding);
+
+  .z-productlist-item {
+    .make-xs-column((24 / 2), @productlist-grid-col-padding);
+    .make-sm-column((24 / 3), @productlist-grid-col-padding);
+    .make-lg-column((24 / 4), @productlist-grid-col-padding);
+  }
+}
+
+.z-productlist-grid-item {
+  padding-bottom: @productlist-grid-col-padding;
+
+  .z-product-title {
+    height: @productlist-grid-title-height;
+    padding: @productlist-grid-padding;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .border-top-radius(@productlist-grid-border-radius);
+
+    h4 {
+      font-size: @font-size-base;
+      line-height: @line-height-computed;
+    }
+
+    @media @phone {
+      padding: @productlist-grid-padding-mobile;
+      height: @productlist-grid-title-height-mobile;
+    }
+  }
+
+  .z-priceblock {
+    width: 100%;
+    position: absolute;
+    padding: 0 @productlist-grid-padding;
+    bottom: (@productlist-grid-padding / 2);
+
+    @media @mobile-device {
+      padding: 0 @productlist-grid-padding-mobile;
+      bottom: 0;
+    }
+  }
+
+  .z-productprices {
+    margin-top: -2px;
+
+    .z-oldprice, .z-productprice {
+      text-align: right;
+    }
+
+    .z-oldprice {
+      @media @phone {
+        margin-bottom: -5px;
+      }
+    }
+
+    .z-priceperunit-box {
+      position: absolute;
+      bottom: @productlist-grid-padding;
+
+      @media @phone {
+        max-width: 48%;
+      }
+    }
+  }
+
+  .z-productpicture {
+    text-align: center;
+    margin: @productlist-grid-padding;
+
+    @media @phone {
+      margin: @productlist-grid-padding-mobile;
+    }
+
+    img {
+      display: inline-block;
+      max-width: 100%;
+      max-height: @productlist-grid-image-height;
+
+      @media @phone {
+        max-height: @productlist-grid-image-height-phone;
+      }
+    }
+  }
+
+  > div {
+    position: relative;
+    height: @productlist-grid-item-height;
+    border: 1px solid @border-color;
+    border-radius: @productlist-grid-border-radius;
+
+    @media @phone {
+      height: @productlist-grid-item-height-phone;
+    }
+  }
+}
+
+.z-productlist-infogrid { // View: Double Grid
+  .make-row(@productlist-infogrid-col-padding);
+
+  > li {
+    .make-xs-column((24 / 2), @productlist-infogrid-col-padding);
+    padding-bottom: @productlist-infogrid-col-padding;
+
+    > div {
+      border: 1px solid @border-color;
+      border-radius: @productlist-infogrid-border-radius;
+      padding: @productlist-infogrid-padding;
+
+      @media @mobile-device {
+        padding: @productlist-infogrid-padding-mobile;
+      }
+    }
+  }
+
+  .z-productlist-infogrid-content {
+    position: relative;
+    height: @productlist-infogrid-item-height;
+
+    > div {
+      height: (@productlist-infogrid-item-height - 2*@productlist-infogrid-padding);
+      float: left;
+    }
+  }
+
+  form {
+    height: 100%;
+  }
+
+  .z-productpicture {
+    margin: 0;
+    text-align: center;
+    width: @productlist-infogrid-image-col-width;
+    padding-right: 2px;
+
+    img {
+      margin: 0 auto;
+      max-height: @productlist-infogrid-image-height;
+    }
+  }
+
+  .z-productdetails {
+    width: (100% - @productlist-infogrid-image-col-width);
+  }
+
+
+  .z-product-title {
+    height: @productlist-infogrid-title-height;
+
+    @media @not-mobile-device {
+      margin-top: 3px;
+    }
+  }
+
+  .z-productprices {
+    position: absolute;
+    text-align: right;
+    bottom: 70px;
+    right: 0;
+
+    .z-oldprice {
+      @media @not-mobile-device {
+        margin: 8px 6px 0 0;
+        float: left;
+      }
+
+      @media @mobile-device {
+        margin: 2px 0 -2px 0;
+      }
+    }
+
+    .z-productprice {
+      float: right;
+    }
+  }
+
+  .z-productlist-buttons {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+
+    .z-product-compare {
+      margin-bottom: 3px;
+    }
+  }
+}
+
+
+// Product Infos
+#productMain {
+  .z-product-picture {
+    img {
+      margin: 0 auto;
+      max-height: @productdetails-picture-maxheight;
+
+      @media @phone {
+        max-height: @productdetails-picture-maxheight-phone;
+      }
+    }
+
+    // this is the loading icon dynamically inserted by ElevateZoom. Unfortunately, it neither has an id or a class, so catch it like this
+    > div:not(.z-product-picture-magnifier) {
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100% !important;
+      background-size: @loading-icon-size !important;
+    }
+
+    .z-product-picture-magnifier {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      cursor: pointer;
+      padding: 2px 2px 2px 3px;
+      background: rgba(255, 255, 255, 0.75);
+      font-size: @font-size-large;
+      z-index: 100;
+    }
+
+    @media @phone {
+      text-align: center;
+    }
+
+    a {
+      text-align: center;
+    }
+  }
+
+  @media @phone {
+    .z-product-picture-wrapper {
+      margin-bottom: 5px;
+    }
+  }
+
+  .z-productpictures-more {
+    margin-top: 10px;
+
+    @media @phone {
+      margin-bottom: 5px;
+    }
+
+    li {
+      margin:  2px 4px 2px 0;
+      float: left;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      border: 1px solid @border-color;
+
+      width: @productpictures-more-image-width;
+      height: @productpictures-more-image-height;
+      line-height: (@productpictures-more-image-height - 5px); // // why 5px? fix for a weird Firefox bug
+
+      @media @mobile-device {
+        width: @productpictures-more-image-height-mobile;
+        height: @productpictures-more-image-height-mobile;
+        line-height: (@productpictures-more-image-height-mobile - 5px); // why 5px? fix for a weird Firefox bug
+      }
+
+      &.active {
+        border-color: @gray;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  .z-product-title h1 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    small {
+      display: block;
+    }
+
+    @media @not-phone {
+      font-weight: normal;
+      margin-bottom: 5px;
+      font-size: @productdetails-product-title-font-size;
+    }
+  }
+
+  .z-rating {
+    @media @phone {
+      margin-bottom: 3px;
+    }
+  }
+
+  // adjust ONLY margins between persparam and selectlists
+  .z-detailsbox {
+    .z-variant-dropdown:not(:last-child) { margin-bottom: 3px; }
+
+    .z-persparam, .z-selectlist {
+      &:not(:first-child) { margin-top: 10px; }
+      &:first-child { margin-top: 3px; }
+      &:last-child { margin-bottom: 3px; }
+    }
+  }
+
+  // the boxes on the right of the product picture
+  .z-detailsbox {
+    border-width: 1px 1px 0px 1px;
+    border-style: solid;
+    border-color: @border-color;
+    padding: @productdetails-box-padding;
+
+    &:last-child {
+      border-width: 1px;
+    }
+
+    @media @phone {
+      border-left: 0;
+      border-right: 0;
+    }
+
+    @media @mobile-device {
+      padding: @productdetails-box-padding-mobile;
+    }
+  }
+
+  @media @phone {
+    .z-col-next-to-manufacturer-logo {
+      padding-top: 4px;
+    }
+  }
+
+  .z-persparam {
+    .form-group {
+      margin-bottom: 0;
+    }
+
+    label {
+      text-align: left;
+      font-weight: bold;
+    }
+  }
+
+  @media @mobile-device {
+    margin-top: 5px;
+  }
+
+  .z-productprices {
+    text-align: right;
+
+    .z-productprice {
+      font-size: 22px;
+    }
+  }
+
+  .z-product-manufacturer-logo {
+    max-width: @productdetails-manufacturer-logo-maxwidth;
+    max-height: @productdetails-manufacturer-logo-maxheight;
+  }
+
+  .z-actionlinks {
+    margin-bottom: -3px;
+
+    .dropdown {
+      a:focus {
+        background-position: 0;
+      }
+
+      .dropdown-menu {
+        position: absolute;
+        left: -50px;
+      }
+    }
+
+    > div {
+      display: inline-block;
+
+      > span, > div {
+        float: left;
+        margin: 0 5px 0 0;
+      }
+    }
+  }
+
+  .z-social {
+    margin-top: 5px;
+    height: 20px;
+
+    > div {
+      display: inline-block;
+    }
+  }
+
+  .z-product-amountprice .popover {
+    @media @phone {
+      left: 25px !important;
+    }
+  }
+
+  .z-to-basket {
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .z-to-basket-with-controls {
+    .input-group {
+      margin: 0 auto 7px auto;
+
+      input {
+        width: 42px;
+        text-align: center;
+      }
+
+      .input-group-btn {
+        width: 32px;
+      }
+    }
+  }
+}
+
+.z-tag-cloud {
+  margin-bottom: 15px;
+
+  .label {
+    display: inline-block;
+    padding: 10px 13px;
+    margin: 0 10px 5px 0;
+  }
+
+  .label-default a {
+    color: @label-color;
+  }
+
+  .z-label-new {
+    background-color: lighten(@label-default-bg, 15%);
+  }
+}
+
+.z-tags-add {
+  max-width: 250px;
+  margin-right: 20px;
+  float: left;
+}
+
+.z-tag-error {
+  display: none;
+}
+
+
+.z-stock-status {
+  font-size: @font-size-mini;
+  line-height: (@font-size-mini * 1.25);
+}
+
+.z-product-additional-info {
+  font-size: @font-size-mini;
+}
+
+.z-to-basket {
+  input {
+    text-align: center;
+  }
+
+  .input-group {
+    margin-bottom: 0;
+  }
+
+  .input-group-btn {
+    &, & > button {
+      width: 100%;
+    }
+  }
+}
+
+.z-attributes { // attributes table
+  border-bottom: 1px solid @table-border-color;
+  margin-top: 15px;
+}
+
+
+.z-rating {
+  a .rateit {
+    cursor: pointer;
+  }
+
+  .z-rating-stars, .z-rating-value {
+    float: left;
+  }
+
+  .z-rating-value {
+    margin-top: 1px;
+    margin-left: 5px;
+    font-size: @font-size-small;
+  }
+}
+
+.z-product-info-main {
+  .nav-tabs li a {
+    @media @mobile-device {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+}
+
+.z-product-info {
+  margin-top: 10px;
+
+  @media @phone {
+    .panel-group ul {
+      padding-left: 30px; // reduce from default value of 40px
+    }
+  }
+
+  .tab-content {
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: @border-color;
+    padding: @productdetails-tab-content-padding;
+    margin-bottom: 20px;
+  }
+
+  .z-productlist-grid > li {
+    .make-sm-column((24 / 3), @productlist-grid-col-padding);
+  }
+
+  .panel-group {
+    @padding: 7px;
+
+    .panel-heading {
+      padding:0;
+
+      a {
+        width: 100%;
+        display: block;
+        padding: 13px @padding;
+
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .panel-body {
+      padding: @padding;
+
+      @media @phone {
+        h1, h2, h3 {
+          margin-top: 8px;
+          margin-bottom: 7px;
+        }
+      }
+    }
+  }
+
+  // inspired by http://stackoverflow.com/a/18568997/1003971
+  .panel-heading .accordion-toggle:after {
+      /* symbol for "opening" panels */
+      font-family: 'FontAwesome';  /* essential for enabling FontAwesome */
+      content: @fa-var-chevron-down;    /* adjust as needed, taken from bootstrap.css */
+      float: right;        /* adjust as needed */
+      color: grey;         /* adjust as needed */
+  }
+  .panel-heading .accordion-toggle.collapsed:after {
+      /* symbol for "collapsed" panels */
+      content: @fa-var-chevron-right;    /* adjust as needed, taken from bootstrap.css */
+  }
+}
+
+.z-stock-flag {
+  i.fa {
+    font-size: 10px;
+    color: @stock-full-color;
+  }
+  &.z-stock-low i.fa { color: @stock-low-color; }
+  &.z-stock-not i.fa { color: @stock-not-color; }
+}
+
+
+.z-variants {
+  .dropdown-table th {
+    padding-left: 0;
+  }
+}
+
+
+.z-compare-list {
+  overflow-x: auto;
+  margin-left: (@compare-list-first-col-width - 10px);
+
+  .webkit-scrollbar('horizontal');
+
+  .z-compare-firstcol { // only first column, contains the row descriptions
+    position: absolute;
+    left: 0;
+    width: @compare-list-first-col-width;
+    display: flex;
+
+    span { align-self: center; } // center vertically
+  }
+
+  @border: 1px solid @border-color;
+
+  > table {
+    // due to a Firefox bug, it is neccessary to use border-collapse: separate here. This makes drawing the borders a tedious tasks
+    border-collapse: separate;
+
+    > tbody > tr {
+      &:first-child > td {
+        border-top: @border;
+      }
+
+      > td, > th {
+        padding: @compare-item-padding;
+        border-bottom: @border;
+        border-right: @border;
+      }
+
+      > td {
+        &:last-child {
+          border-right: @border;
+        }
+
+        width: @compare-item-width;
+        height: 100%;
+        position: relative;
+      }
+    }
+  }
+
+  &.scrollable {
+    padding-bottom: 15px; // for scrollbar
+
+    > table {
+      padding-right: 15px;
+    }
+  }
+
+  .z-compare-table-cell-main {
+    > div {
+      position: relative; // firefox does not support position:absolute in table cells, see http://stackoverfolow.com/a/5148041/1003971
+      height: @compare-item-height;
+    }
+  }
+
+  .z-compare-remove {
+    text-align: right;
+  }
+}
+
+.z-compare-item {
+  vertical-align: top;
+
+  .z-compare-item-move {
+    font-size: @font-size-small;
+    border-bottom: 1px solid @border-color;
+    text-align: center;
+    padding: 1px;
+    margin-bottom: 5px;
+  }
+}
+
+.z-compare-item-content {
+  width: @compare-item-width;
+
+  .z-product-title {
+    overflow: hidden;
+  }
+
+  .z-product-picture {
+    text-align: center;
+
+    img {
+      max-width: @compare-item-picture-maxwidth;
+      max-height: @compare-item-picture-maxheight;
+    }
+  }
+
+  .z-compare-actions {
+    position: absolute;
+    bottom: 2px;
+    width: 100%;
+  }
+
+  .z-variants {
+    margin: 10px 0 15px 0;
+  }
+
+  .z-productprices {
+    position: relative;
+    width: 100%;
+    text-align: right;
+    margin-bottom: 1px;
+  }
+
+  .z-oldprice {
+    position: absolute;
+    bottom: 2px;
+  }
+
+  .z-productprice-per-unit {
+    font-size: @font-size-mini;
+  }
+
+  .z-product-amountprice {
+    float: left;
+
+    .popover { // strange fix for the bootstrap popover positioning
+      left: 0px !important;
+    }
+  }
+
+  .z-product-additional-info {
+    clear: both;
+    width: 100%;
+  }
+
+  .z-to-basket, .z-variants-moreinfo {
+    width: 100%;
+    text-align: right;
+    margin-bottom: -5px;
+  }
+
+  .z-stock-status {
+    position: relative;
+    margin-top: 5px;
+    min-height: 30px;
+
+    .z-stock-flag {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
+// end product comparism page
+
+.z-featured-list {
+  padding-left: 0;
+
+  li a {
+    display: block;
+    box-sizing: content-box;
+    padding: 7px 10px 5px 10px;
+    background-color: @featured-list-bg;
+    color: @featured-list-color;
+  }
+
+  li:hover, li:hover + li {
+    &.z-featured-article-title a {
+      background-color: @featured-list-hover-bg;
+      color: @featured-list-hover-color;
+      text-decoration: none;
+    }
+  }
+
+  .z-featured-article-image {
+    a {
+      height: 100%;
+      display: block;
+      background-color: white;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100px;
+      max-height: 100px;
+    }
+  }
+}
+
+.z-review {
+  .z-rating {
+    margin-bottom: 5px;
+  }
+
+  .z-review-date {
+    font-size: @font-size-small;
+    font-weight: normal;
+  }
+
+  dl {
+    margin-top: 15px;
+    margin-bottom: 0px;
+  }
+
+  .rateit {
+    margin-bottom: 5px;
+    top: 3px;
+  }
+
+  @media @phone {
+    dl {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.z-minibasket-modal {
+  .modal-dialog {
+    max-height: 100%;
+  }
+
+  .modal-body {
+    overflow-y: auto;
+    padding: 0;
+
+    .webkit-scrollbar('vertical');
+
+    .bootbox-body {
+      margin: @modal-inner-padding;
+
+      @media @phone {
+        margin: (@modal-inner-padding / 2);
+      }
+    }
+  }
+}
+
+// Checkout process
+.z-checkout-controls {
+  margin: 20px 0;
+
+  @media @phone {
+    margin: 10px 0;
+  }
+}
+
+
+.z-checkout-steps {
+  text-align: center;
+  margin-bottom: 20px;
+
+  @media @phone {
+    margin-bottom: 10px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      box-sizing: content-box;
+    }
+  }
+
+  .z-steps-title {
+    display: inline;
+  }
+
+  // inspired by: https://github.com/twitter/bootstrap/issues/1982#issuecomment-7814657
+  &.wizard {
+
+    li {
+      box-sizing: content-box;
+      height: 20px;
+      padding: 10px 11px 10px 10px;
+      margin-right: 5px;
+      background-color: @checkout-wizard-arrow-bg;
+      color: @checkout-wizard-arrow-color;
+      position: relative;
+      display: inline-block;
+    }
+
+    li:not(:last-child) {
+      @media @phone {
+        padding-right: 0;
+      }
+    }
+
+    li:before, li:after {
+      width: 0;
+      height: 0;
+      border-top: 20px inset transparent;
+      border-bottom: 20px inset transparent;
+      position: absolute;
+      top: 0;
+      content: "";
+    }
+
+    li:before {
+      border-left: 20px solid #fff;
+      left: 0;
+    }
+
+    li:after {
+      border-left: 20px solid @checkout-wizard-arrow-bg;
+      right: -20px;
+      z-index: 2;
+    }
+
+    li:first-child:before, li:last-child:after {
+      border:none;
+    }
+
+    li:first-child {
+      @media @phone {
+        padding-left: 14px;
+      }
+    }
+
+    .z-steps-number {
+      font-weight: bold;
+      margin: 0 5px 0 18px;
+      position: relative;
+      top: 0;
+    }
+
+    li:first-child .z-steps-number {
+      margin-left: 0;
+    }
+
+    .active {
+      background: @checkout-wizard-arrow-active-bg;
+
+      &, a {
+        color: @checkout-wizard-arrow-active-color;
+      }
+
+      &:after {
+        border-left-color: @checkout-wizard-arrow-active-bg;
+      }
+    }
+  }
+}
+
+.z-basket-wrapper {
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.z-basket { // the basket table
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+  table-layout: fixed; // needed for firefox to respect the max-widths of images in the table
+
+  &, tr { //fixes Firefox bug, part 1 of 2, see http://davidwalsh.name/table-cell-position-absolute
+    height: 100%;
+  }
+
+  @media @phone {
+    margin-bottom: 15px;
+  }
+
+  > tbody, > thead {
+    > tr {
+      border: 1px solid @border-color;
+
+      > td, > th {
+        padding: @basket-item-padding-vertical @basket-item-padding-horizontal;
+        vertical-align: top;
+      }
+    }
+  }
+
+  > thead {
+    > tr > th {
+      background-color: @basket-table-head-bg;
+      padding: 5px;
+      text-align: left;
+      font-family: @headings-font-family;
+    }
+  }
+
+  input[type="checkbox"] { // overwrite Bootstrap default (negative margin)
+    margin-left: 0;
+  }
+
+  col.z-basket-thumb { width: 14%; }
+  col.z-basket-quantity { width: 15%; }
+  col.z-basket-unitprice { width: 10%; }
+  col.z-basket-vat { width: 8%; }
+  col.z-basket-total { width: 12%; }
+
+  .z-basket-thumb {
+    text-align: center;
+    vertical-align: middle;
+
+    img {
+      margin: 0 auto;
+      max-height: @basket-thumb-maxheight;
+
+      @media @phone {
+        max-height: @basket-thumb-maxheight-phone;
+      }
+    }
+
+    @media @tablet {
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+
+    @media @phone {
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+  }
+
+  .z-product-title h4 {
+    float: left;
+    margin: 0 2px 5px 0;
+    font-size: @basket-product-title-font-size;
+
+    @media @phone {
+      font-size: @font-size-base;
+    }
+  }
+
+  .z-basket-total, .z-basket-vat, .z-basket-unitprice, .z-basket-quantity {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .z-basket-checkbox {
+    vertical-align: middle;
+  }
+
+  .z-product-artnum {
+    font-size: @font-size-small;
+  }
+
+  .z-selectlist {
+    th {
+      text-align: left;
+    }
+  }
+
+  .z-product-attributes {
+    font-size: @font-size-small;
+  }
+
+  .z-product-wrapping {
+    margin-top: 10px;
+  }
+
+  .z-basket-quantity .z-basket-remove {
+    @media @phone {
+      clear: both;
+    }
+
+    @media @mobile-device {
+      float: right;
+    }
+  }
+
+  .z-pers-param-box {
+    .form-group {
+      margin-bottom: 0;
+    }
+
+    .control-label {
+      text-align: left;
+      font-weight: bold;
+    }
+  }
+
+  .z-quantity {
+    float: left;
+    width: 95px;
+    margin-bottom: 4px;
+
+    @media @tablet {
+      float: right;
+    }
+
+    @media @phone {
+      width: 45px;
+      float: right;
+
+      .input-group {
+        float: right;
+      }
+
+      .input-group-btn {
+        display: none;
+      }
+    }
+
+    input {
+      text-align: center;
+    }
+  }
+
+  .z-greetingcard-message {
+    margin-top: 8px;
+  }
+
+  .alert {
+    padding: 4px 7px;
+    margin-bottom: 7px;
+  }
+
+  @media @phone {
+    .z-basket-unitprice, .z-basket-vat, .z-basket-checkbox {
+      display: none;
+    }
+  }
+
+  tr.z-basket-summary {
+    text-align: right;
+  }
+
+  #orderCardText {
+    padding: (@line-height-computed / 4) (@line-height-computed / 2);
+    margin: 0;
+
+    p {
+      font-size: @font-size-base;
+    }
+  }
+
+  // fix some strange border bug on mobile devices
+  @media @phone {
+    > tbody > tr > td {
+      padding: 5px 2px;
+    }
+
+    col.z-basket-thumb { width: 20%; }
+    col.z-basket-product { width: 44%; }
+    col.z-basket-total { width: 18%; }
+    col.z-basket-quantity { width: 18%; }
+  }
+}
+
+.z-basket-additional-actions {
+  h4 {
+    margin-top: 0;
+  }
+}
+
+.z-basket-summary {
+  width: 100%;
+
+  table {
+    float: right;
+    width: 350px;
+
+    @media @phone {
+      width: 270px;
+    }
+  }
+
+  tr:first-child {
+    th, td {
+      border-top-width: 0;
+    }
+  }
+
+  tr {
+    th, td {
+      border-top: 2px solid @gray-lighter;
+      padding: 5px;
+    }
+
+    th {
+      font-weight: normal;
+
+      .btn {
+        margin-left: 10px;
+      }
+    }
+
+    td {
+      text-align: right;
+    }
+  }
+
+  .z-basket-summary-total {
+    th, td {
+      border-top-color: @gray-light;
+    }
+  }
+}
+
+.z-basket-summary-total {
+  font-size: @font-size-large;
+  white-space: nowrap;
+}
+
+.z-basket-voucher {
+  padding-top: 25px;
+  margin-bottom: 20px;
+
+  @media @phone {
+    padding-top: 10px;
+    margin-bottom: 15px;
+  }
+}
+
+
+.z-minibasket {
+  .z-basket-quantity {
+    width: 6%;
+  }
+
+  .z-basket-thumb {
+    width: 20%;
+
+    img {
+      max-height: @minibasket-thumb-maxheight;
+
+      @media @phone {
+        max-height: @minibasket-thumb-maxheight-phone;
+      }
+    }
+  }
+
+  .z-basket {
+    > thead > tr > th {
+      background: none;
+    }
+
+    > thead, > tbody {
+      > tr {
+        border-width: 0 0 1px 0;
+
+        > th, > td {
+          padding: 5px 3px;
+
+          @media @phone {
+            padding: 4px 2px;
+          }
+        }
+      }
+    }
+  }
+
+  .z-selectlist, .z-pers-param-box {
+    margin: 0;
+    font-size: @font-size-small;
+  }
+
+  .z-basket-total {
+    width: 20%;
+  }
+
+  .z-basket-summary th {
+    text-align: right;
+  }
+}
+
+.z-wrapping {
+  @media @not-phone {
+    .modal-dialog { // enlarge the modal box. ugly. but bootstrap itself does it like this
+      width: 80%;
+    }
+  }
+
+  input[type="radio"] {
+    margin-right: 8px;
+  }
+
+  fieldset {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  col.z-wrapping-thumb { width: 20%; }
+  col.z-wrapping-desc { width: 20%; }
+
+  .z-wrapping-thumb {
+    text-align: center;
+
+    img {
+      max-width: 125px;
+      max-height: 125px;
+      margin: 0 auto;
+
+      @media @phone {
+        max-width: 85px;
+        max-height: 85px;
+      }
+    }
+  }
+
+  .z-wrapping-price img {
+    @media @phone {
+      max-width: 50px;
+    }
+  }
+
+  .z-wrapping-data {
+    width: 100%;
+    tr {
+      border-bottom: 1px solid @border-color;
+    }
+
+    td {
+      padding: 5px;
+
+      @media @phone {
+        padding: 2px;
+      }
+    }
+
+    ul {
+      li:not(:last-child) {
+        padding-bottom: 5px;
+      }
+    }
+
+    span.z-wrapping-price {
+      font-weight: bold;
+      float: right;
+    }
+  }
+
+  .z-wrapping-card {
+    @media @not-phone {
+      li {
+        float: left;
+        margin-right: 20px;
+      }
+    }
+
+    img {
+      margin-left: 20px;
+    }
+  }
+
+  .z-wrapping-comment {
+    margin-top: 20px;
+    textarea {
+      width: 95%;
+    }
+  }
+}
+
+
+.z-checkout-options {
+  h3 {
+    border-bottom: 1px solid @border-color;
+  }
+}
+
+.z-checkout-options, .z-account-login-options, .z-checkout-addresses, .z-checkout-customerinfo, .z-checkout-shipping-payment {
+  @media @phone {
+    > div {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.z-account-login-options {
+  .btn {
+    width: 100%;
+  }
+
+  .z-forgot-pwd {
+    text-align: center;
+  }
+
+  .z-account-login {
+    .btn-primary {
+      margin: 10px 0 10px 0;
+    }
+  }
+}
+
+
+.z-checkout-shipping-address {
+  margin-bottom: 40px;
+
+  .z-new-shipping-address {
+    margin-left: 10px;
+  }
+}
+
+.z-delivery-addresses {
+  margin-bottom: 10px;
+
+  button {
+    @media @not-phone {
+      margin-top: 10px;
+    }
+    @media @phone {
+      margin-left: 20px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.z-checkout-shipping {
+  margin-bottom: 20px;
+
+  .z-shipping-cost {
+    margin-top: 10px;
+  }
+}
+
+
+.z-checkout-payment, .z-checkout-shipping {
+  dt {
+    font-weight: normal;
+  }
+
+  dl {
+    margin-top: 0;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  dd {
+    margin-top: 10px;
+  }
+}
+
+.z-order-section {
+  margin-bottom: 20px;
+}
+
+#z-order-addresses {
+  margin-top: 40px;
+}
+// end Checkout process
+
+
+// Account
+.z-account-billing-address {
+  margin-bottom: 35px;
+}
+
+.z-wishlist-search {
+  margin-bottom: 20px;
+}
+
+
+.z-privatesales-login {
+  clear: both;
+
+  .z-privatesales-form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .z-privatesales-languages {
+    text-align: right;
+    padding-right: 25px;
+  }
+}
+
+
+// Links page
+.z-links {
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+  .z-links-content {
+    padding-left: 20px;
+  }
+}
+
+// Listmania page
+.z-recommendations-list {
+  .z-recommendations {
+    .z-recommendations-buttons button:not(:last-child){
+      margin-right: 5px;
+    }
+
+    .z-recommendations-title {
+      font-weight: bold;
+    }
+  }
+}
+
+.z-recommlist-ratings {
+  margin-bottom: 20px;
+
+  @media @mobile-device {
+    margin-bottom: 10px;
+  }
+}
+
+.z-company-address { // on contact page
+  margin-bottom: 20px;
+}
+
+.z-forgotpwd-text {
+  ul {
+    padding-left: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+}
+
+.control-label.req {
+  font-weight: bold;
+}
+
+#account-dashboard dd {
+  margin-left: 10px;
+}
+
+.z-order-list {
+  .z-order-listitem {
+    margin-bottom: 20px;
+  }
+
+  .z-order-date {
+    font-size: @font-size-large;
+  }
+}
+
+
+.z-downloadlist {
+  dt {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 3px;
+    margin-bottom: 7px;
+    font-size: @font-size-large;
+  }
+
+  dd {
+    margin-left: 5px;
+  }
+
+  .z-download-details {
+    margin-left: 17px;
+  }
+}
+
+#z-map {
+  width: 100%;
+  height: 450px;
+  margin-bottom: 20px;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media @phone {
+    height: 350px;
+  }
+}
+
+
+a.rss {
+  // background-color: @white;
+  background-color: #FFF;
+  font-size: 14px;
+
+  &:hover {
+    text-decoration: none;
+  }
+  i {
+    margin: 0 2px;
+    color: @rss-icon-color;
+  }
+}
+
+.zoomContainer {
+  z-index: 999;
+
+  @media @phone {
+    display: none;
+  }
+}
+
+
+#responsive-test {
+  #smartphone {
+    @media @phone {
+      color: red;
+    }
+  }
+  #tablet {
+    @media @tablet {
+      color: red;
+    }
+  }
+  #mobile-device {
+    @media @mobile-device {
+      color: red;
+    }
+  }
+  #not-mobile-device {
+    @media @not-mobile-device {
+      color: red;
+    }
+  }
+  #not-phone {
+    @media @not-phone {
+      color: red;
+    }
+  }
+}
+
+
+#phone {
+  @media @phone {
+    color: red;
+  }
+}
+
+#phonelandscape {
+  @media @phone-landscape {
+    color: red;
+  }
+}
+
+#phoneportrait {
+  @media @phone-portrait {
+    color: red;
+  }
+}
+
+#tablet {
+  @media @tablet {
+    color: red;
+  }
+}
+
+#notphone {
+  @media @not-phone {
+    color: red;
+  }
+}
+
+#mobiledevice {
+  @media @mobile-device {
+    color: red;
+  }
+}
+
+#notmobiledevice {
+  @media @not-mobile-device {
+    color: red;
+  }
+}

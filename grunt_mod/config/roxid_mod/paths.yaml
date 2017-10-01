@@ -1,0 +1,9 @@
+tpl_mod: 'application/views/roxid_mod/tpl'
+src:
+  css_mod: 'out/roxid_mod/src/css'
+  js_mod: 'out/roxid_mod/src/js'
+  favicons: 'out/roxid_mod/src/favicons'
+dest:
+  css_mod: 'out/roxid_mod/build/css'
+  js_mod: 'out/roxid_mod/build/js'
+  favicons: 'out/roxid_mod/build/favicons'

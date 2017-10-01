@@ -1,0 +1,147 @@
+@phone: ~"(max-width: @{screen-xs-max})";
+@not-phone: ~"(min-width: @{screen-xs-max})";
+@phone-portrait: ~"(max-width: @{screen-xs-max}) and (orientation:portrait)";
+@phone-landscape: ~"(max-width: @{screen-xs-max}) and (orientation:landscape)";
+@tablet: ~"(min-width: @{screen-sm-min}) and (max-width: @{screen-sm-max})";
+@mobile-device: ~"(max-width: @{screen-sm-max})";
+@not-mobile-device: ~"(min-width: @{screen-sm-max})";
+@retina: ~"(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)";
+
+@border-color: @panel-default-border;
+@shadow-color: #BBB;
+@rss-icon-color: #FF4500;
+@font-size-mini: (@font-size-base * 0.8); // ~10px
+
+@stock-full-color: #9CCB19;
+@stock-low-color: #FFC125;
+@stock-not-color: #CD0000;
+
+// Cookie note
+@cookie-note-bg: #ffee77;
+@cookie-note-color: @text-color;
+
+// Manufacturer slider on start page
+@manufacturer-slider-img-max-width: 100px;
+@manufacturer-slider-img-max-height: 100px;
+
+// Header settings
+@logo-maxwidth: 300px;
+@logo-maxwidth-phone: 300px;
+@header-minibasket-icon-height: 95px;
+@header-loginbox-min-width: 220px;
+@header-loginbox-left-margin: -80px;
+
+// Navbar settings
+@navbar-basket-icon-size: 28px;
+@navbar-basket-icon-counter-size: 15px;
+@dropdown-submenu-arrow-color: white;
+
+// Category tree in sidebar
+@category-tree-level-indentation: 10px;
+@category-tree-icon-color: @text-color;
+@category-tree-subitem-font-size: (@font-size-base - 1px);
+@category-tree-icon-closed: @fa-var-caret-right;
+@category-tree-icon-open: @fa-var-caret-down;
+@category-tree-icon-font-size: @font-size-base;
+
+// Sidebar blocks
+@sidebarbox-padding: 8px;
+@sidebarbox-heading-bg: @panel-default-heading-bg;
+@sidebarbox-heading-color: @panel-default-text;
+
+// Featured articles in sidebar
+@featured-list-color: @text-color;
+@featured-list-bg: lighten(@panel-default-heading-bg, 1%);
+@featured-list-hover-color: @navbar-default-link-color;
+@featured-list-hover-bg: @navbar-default-bg;
+
+// Category box
+@category-box-col-padding: 7px;
+@category-box-title-height: 32px;
+@category-box-title-fontsize: 18px;
+@category-box-title-bg: @gray-lighter;
+@category-box-title-color: @text-color;
+
+// Basket
+@basket-table-head-bg: @gray-lighter;
+@basket-product-title-font-size: ((@font-size-base + @font-size-h4) / 2);
+@basket-thumb-maxheight: 125px;
+@basket-thumb-maxheight-phone: 90px;
+@basket-item-padding-vertical: 7px;
+@basket-item-padding-horizontal: 5px;
+
+// Checkout step wizard
+@checkout-wizard-arrow-bg: darken(@gray-lighter, 3%);
+@checkout-wizard-arrow-color: @text-color;
+@checkout-wizard-arrow-active-bg: @navbar-default-bg;
+@checkout-wizard-arrow-active-color: @navbar-default-link-color;
+
+// Minibasket
+@minibasket-thumb-maxheight: 90px;
+@minibasket-thumb-maxheight-phone: 80px;
+
+// Attribute filter / product list sorting
+@productlist-filter-bg: @gray-lighter;
+
+// Product list grid
+@productlist-grid-item-height: 250px;
+@productlist-grid-item-height-phone: 200px;
+@productlist-grid-col-padding: 5px;
+@productlist-grid-padding: 4px;
+@productlist-grid-padding-mobile: 2px;
+@productlist-grid-border-radius: 0;
+@productlist-grid-title-bg: @gray-lighter;
+@productlist-grid-title-height: (2*@line-height-computed + 2*@productlist-grid-padding);
+@productlist-grid-title-height-mobile: (2*@line-height-computed + 2*@productlist-grid-padding-mobile);
+@productlist-grid-image-height: (@productlist-grid-item-height - @productlist-grid-title-height - 47px);
+@productlist-grid-image-height-phone: (@productlist-grid-item-height-phone - @productlist-grid-title-height-mobile - 38px);
+
+// Product list infogrid
+@productlist-infogrid-item-height: 160px;
+@productlist-infogrid-col-padding: 4px;
+@productlist-infogrid-padding: 3px;
+@productlist-infogrid-padding-mobile: 3px;
+@productlist-infogrid-title-height: (2 * @line-height-base * @font-size-h4);
+@productlist-infogrid-border-radius: 0;
+@productlist-infogrid-image-height: @productlist-infogrid-item-height;
+@productlist-infogrid-image-col-width: 42%;
+
+// Product list line
+@productlist-line-item-height: 155px;
+@productlist-line-item-height-phone: 115px;
+@productlist-line-item-padding: 5px;
+
+// Product details
+@productdetails-product-title-font-size: 22px;
+@productdetails-picture-maxheight: 400px;
+@productdetails-picture-maxheight-phone: 360px;
+@productdetails-box-padding: 5px 7px;
+@productdetails-box-padding-mobile: 3px 7px;
+@productdetails-tab-content-padding: 10px 15px;
+@productdetails-manufacturer-logo-maxwidth: 100px;
+@productdetails-manufacturer-logo-maxheight: 100px;
+@productpictures-more-image-width: 98px;
+@productpictures-more-image-height: 98px;
+@productpictures-more-image-width-mobile: 72px;
+@productpictures-more-image-height-mobile: 72px;
+
+// Product comparism page
+@compare-list-first-col-width: 150px;
+@compare-item-width: 200px;
+@compare-item-height: 370px;
+@compare-item-padding: 3px 5px;
+@compare-item-picture-maxwidth: 185px;
+@compare-item-picture-maxheight: 150px;
+
+// Footer settings
+@footer-bg: white;
+@footer-text-color: @text-color;
+@footer-link-color: @link-color;
+@footer-link-hover-color: @link-hover-color;
+@footer-font-size: (@font-size-base * 0.85);
+
+// VAT message
+@vat-message-opacity: 0.8;
+
+// loading indicator. set to half the actual size, so it looks good on retina screens
+@loading-icon-size: 48px;

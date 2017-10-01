@@ -1,0 +1,79 @@
+// disable buttons in number inputs, see https://stackoverflow.com/questions/3975769/disable-webkits-spin-buttons-on-input-type-number
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+// set height of all inputs group elements. Firefox wants a special treatment...
+.firefox {
+  .input-group-btn .btn {
+    height: @input-height-base;
+  }
+}
+
+
+label {
+  font-weight: inherit;
+}
+
+.form-inline-xs .form-control {
+  display: inline-block;
+}
+
+@media (max-width: @screen-xs-max) {
+  .form-group {
+    margin-bottom: 8px;
+  }
+}
+
+
+.pagination > li {
+  > a, > span {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+}
+
+legend > .btn {
+  margin-bottom: 3px;
+}
+
+// remove the default bootstrap box shadown on the navigation
+.navbar-fixed-top .navbar-inner, .navbar-static-top .navbar-inner {
+  box-shadow: none;
+}
+
+// display the menu navigation button on the left in the mobile version
+.navbar .btn-navbar {
+  float: left;
+}
+
+a.dropdown-toggle {
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}
+
+// highlighting in navbar for dropdown submenus
+.nav .dropdown-menu {
+  li:hover > a {
+    color: @dropdown-link-hover-color;
+    background-color: @dropdown-link-hover-bg;
+  }
+}
+
+
+.navbar-default .navbar-nav > li:hover > a {
+  color: @navbar-default-link-hover-color;
+  background-color: @navbar-default-link-hover-bg;
+}
+
+.navbar-inverse .navbar-nav > li:hover > a {
+  color: @navbar-inverse-link-hover-color;
+  background-color: @navbar-inverse-link-hover-bg;
+}

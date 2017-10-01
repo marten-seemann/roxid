@@ -1,0 +1,31 @@
+libs_js:
+  bootstrap:
+    affix: false
+    alert: true
+    button: false
+    carousel: true
+    collapse: true
+    dropdown: true
+    modal: true
+    popover: true
+    scrollspy: false
+    tab: true
+    tooltip: true
+    transition: true
+  bootbox: true
+  dotdotdot: true
+  mmenu: true
+  owl_carousel: true
+  validator: true
+colorthemes:
+  - cerulean
+  - cosmo
+  - default
+  - journal
+  - lumen
+  - simplex
+  - sandstone
+  - spacelab
+  - united
+  - yeti
+cssbanner: "/*\nAutomatisch generierte Datei.\nDiese Datei NICHT für Anpassungen verwenden.\nWird bei jedem ROXID-Update überschrieben.\n\nAutomatically generated file.\nDo NOT modify.\nWill be overwritten by every ROXID update.\n*/"

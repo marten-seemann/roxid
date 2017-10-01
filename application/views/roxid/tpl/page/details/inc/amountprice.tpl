@@ -1,0 +1,7 @@
+[{oxhasrights ident="SHOWARTICLEPRICE"}]
+    [{if $oDetailsProduct->getPrice()}]
+        [{if $oDetailsProduct->loadAmountPriceInfo()}]
+            [{include file="page/details/inc/priceinfo.tpl"}]
+        [{/if}]
+    [{/if}]
+[{/oxhasrights}]

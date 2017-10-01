@@ -1,0 +1,14 @@
+// always show scrollbar
+// should be applied to scrollable elements (other than body)
+// unfortunately, only works in webkit
+.webkit-scrollbar(@direction) {
+  &::-webkit-scrollbar { -webkit-appearance: none; }
+  &::-webkit-scrollbar:horizontal when (@direction = 'horizontal') { height: 11px; }
+  &::-webkit-scrollbar:vertical when (@direction = 'vertical') { width: 11px; }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, .4);
+  }
+}

@@ -1,0 +1,70 @@
+#logo img {
+  max-width: @logo-maxwidth;
+  margin-bottom: 10px;
+
+  @media @phone {
+    margin-top: 8px;
+    margin-bottom: 0;
+    max-width: @logo-maxwidth-phone;
+  }
+}
+
+#navigation {
+  background-color: @breadcrumb-bg;
+
+  @media @not-phone {
+    box-shadow: 0px 2px 8px @shadow-color;
+  }
+}
+
+.z-basket-box {
+  position: relative;
+  margin-bottom: 5px;
+  text-align: right;
+
+  .z-basket-itemcount {
+    position: absolute;
+    top: 13px;
+    right: -4px;
+  }
+
+  // mini basket. scale to half the image size to make it look great on Retina displays
+  #minibasketIcon {
+    width: @header-minibasket-icon-height;
+    margin-right: 10px;
+  }
+}
+
+.z-sidebarblock {
+  .panel-default .panel-heading {
+    background-color: @sidebarbox-heading-bg;
+    color: @sidebarbox-heading-color;
+    text-align: center;
+  }
+}
+
+.z-category-tree {
+  .icon, .placeholder {
+    border-right: 1px dotted @border-color;
+  }
+}
+
+.z-category-box {
+  > h3 {
+    background-color: @category-box-title-bg;
+
+    a {
+      color: @category-box-title-color;
+    }
+  }
+}
+
+.z-productlist-grid {
+  .z-product-title {
+    background-color: @productlist-grid-title-bg;
+  }
+}
+
+.z-productlist-filter {
+  background-color: @productlist-filter-bg;
+}

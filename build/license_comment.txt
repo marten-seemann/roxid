@@ -1,0 +1,14 @@
+/**
+* Diese Datei ist Bestandteil des ROXID-Templates.
+*
+* Bitte beachten Sie die Lizenz auf https://github.com/marten-seemann/roxid.
+*
+*
+* This file is part of the ROXID template.
+*
+* For more information regarding the license see https://github.com/marten-seemann/roxid.
+*
+*
+* @copyright (C) Marten Seemann, 2013-2016
+* @link      https://www.oxid-responsive.com
+*/

@@ -1,0 +1,1 @@
+UPDATE `oxconfig` SET OXVARVALUE=0x07 WHERE OXMODULE='theme:roxid' AND OXVARNAME='blToBasketAjax';
