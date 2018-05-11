@@ -6,7 +6,7 @@
         <label class="control-label col-sm-8">[{ oxmultilang ident="ADDRESSES" suffix="COLON" }]</label>
         <div class="col-sm-16">
             <input type="hidden" name="changeClass" value="[{$onChangeClass|default:'account_user'}]">
-            [{oxscript add="$('document').zShippingAddress();"}]
+            [{oxscript add="$(document).ready(function() { $(document).zShippingAddress(); });"}]
             [{block name="form_user_shipping_address_select"}]
                 [{include file="form/fieldset/user_shipping_address_selector.tpl" showChangeButton=$showChangeButton}]
             [{/block}]
