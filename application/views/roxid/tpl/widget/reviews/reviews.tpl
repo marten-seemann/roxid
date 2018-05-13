@@ -3,7 +3,7 @@
     [{block name="widget_reviews_form"}]
         <div class="hidden-xs">
             [{if $oxcmp_user}]
-                <form action="[{$oViewConf->getSelfActionLink()}]" method="post">
+                <form action="[{$oViewConf->getSelfActionLink()}]" method="post" data-toggle="roxid-validator">
                     <div class="writeReview" style="display:none;">
                         [{if $oView->canRate()}]
                             <input id="productRating" type="hidden" name="artrating" value="0">
@@ -32,7 +32,7 @@
                             <input type="hidden" name="reviewuserhash" value="[{$sReviewUserHash}]">
                         [{/if}]
 
-                        <textarea rows="[{if $mobiledetails}]5[{else}]12[{/if}]" name="rvw_txt" class="form-control"></textarea><br>
+                        <textarea rows="[{if $mobiledetails}]5[{else}]12[{/if}]" name="rvw_txt" class="form-control" required></textarea><br>
                         <button type="submit" class="btn btn-primary">[{$oViewConf->getRoxidIcon('save')}] [{oxmultilang ident="SAVE"}]</button>
                     </div>
                 </form>

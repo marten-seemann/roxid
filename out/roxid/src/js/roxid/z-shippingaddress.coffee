@@ -50,6 +50,7 @@ $.fn.extend
       shippingAddress.toggle !state
       userChangeShippingAddress.toggle !state
       shippingAddressForm.disableForm state
+      document.updateValidator()
       unless state then checkValidationShipping()
 
     # only execute if the current page is a page with a shipping address form
