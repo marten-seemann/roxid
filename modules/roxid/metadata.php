@@ -19,7 +19,7 @@ $aModule = array(
         'de' => ''
         ),
     // 'thumbnail'    => 'picture.png',
-    'version'      => '3.4.3',
+    'version'      => '3.4.4',
     'author'       => 'Marten Seemann',
     'extend'       => array(
         'oxconfig' => 'roxid/core/roxid_extend_oxconfig',
