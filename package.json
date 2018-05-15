@@ -24,7 +24,7 @@
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-favicons-redux": "^0.9.1",
+    "grunt-favicons-redux": "git+https://github.com/marten-seemann/grunt-favicons.git#9d9c5a6fca9119fb5b6e40f4142f8cf35972d5a3",
     "grunt-mapcat": "^0.3.0",
     "grunt-modernizr": "git+https://github.com/metaloha/grunt-modernizr.git#d6657bf302bd9288e25a513197fb0e30c64ce677",
     "grunt-notify": "^0.4.1",
