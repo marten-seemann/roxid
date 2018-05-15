@@ -28,7 +28,7 @@
     "grunt-mapcat": "^0.3.0",
     "grunt-modernizr": "git+https://github.com/metaloha/grunt-modernizr.git#d6657bf302bd9288e25a513197fb0e30c64ce677",
     "grunt-notify": "^0.4.1",
-    "grunt-sass": "^1.2.0",
+    "grunt-sass": "^2.1.0",
     "load-grunt-configs": "^1.0.0",
     "load-grunt-tasks": "^3.5.0",
     "time-grunt": "^1.2.1"
