@@ -70,6 +70,12 @@ $.fn.extend
     showShipAddress.bind 'change', ->
       manageShippingAddress()
 
+    shippingAddress.find("input[name=oxaddressid]").bind 'change', ->
+      $('form[data-toggle="roxid-validator"]').data("bs.validator").destroy()
+      $("form[name='order'] input[name=cl]").val($("input[name=changeClass]").val())
+      $("form[name='order'] input[name=fnc]").val("")
+      $("form[name='order']").submit()
+
     newShippingAddress.bind 'click', ->
       userChangeShippingAddress.hide()
 

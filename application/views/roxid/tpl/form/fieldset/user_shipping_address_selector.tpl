@@ -26,5 +26,4 @@
 
         [{/foreach}]
     </div>
-    [{oxscript add="$('.z-delivery-addresses input').oxUserShipingAddressSelect();"}]
 [{/if}]
