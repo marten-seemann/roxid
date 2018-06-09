@@ -10,7 +10,7 @@
             [{block name="form_user_shipping_address_select"}]
                 [{include file="form/fieldset/user_shipping_address_selector.tpl" showChangeButton=$showChangeButton}]
             [{/block}]
-            <a href="" class="btn btn-default btn-sm" id="newShippingAddress" onclick="$('.z-delivery-addresses input[value=\'-1\']').trigger('click'); return false;">[{ oxmultilang ident="NEW_ADDRESS" }]</a>
+            <a href="" class="btn btn-default btn-sm" id="newShippingAddress">[{ oxmultilang ident="NEW_ADDRESS" }]</a>
         </div>
     </div>
 </div>
