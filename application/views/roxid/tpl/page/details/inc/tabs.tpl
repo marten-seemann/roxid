@@ -83,24 +83,6 @@
     [{/if}]
 [{/block}]
 
-[{block name="details_tabs_tags"}]
-    [{if $oView->showTags() && ( $oView->getTagCloudManager() || ( ( $oView->getTagCloudManager() || $oxcmp_user) && $oDetailsProduct ) )}]
-        [{capture append="tabs"}]<a href="#tags" data-toggle="tab">[{$oViewConf->getRoxidIcon('tags')}] [{oxmultilang ident="TAGS"}]</a>[{/capture}]
-        [{capture append="tabsContent"}]<div id="tags" class="tab-pane tags">[{oxid_include_dynamic file="page/details/inc/tags.tpl"}]</div>[{/capture}]
-    [{/if}]
-
-    [{if $oViewConf->getViewThemeParam('blShowTagsOnPhone')}]
-        [{capture append="panels"}]<a href="#collapseTags" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#product-panels" aria-expanded="false">[{$oViewConf->getRoxidIcon('tags')}] [{oxmultilang ident="TAGS"}]</a>[{/capture}]
-        [{capture append="panelsContent"}]
-            <div id="collapseTags" class="panel-collapse collapse">
-                <div class="panel-body tags">
-                    [{oxid_include_dynamic file="page/details/inc/tags.tpl"}]
-                </div>
-            </div>
-        [{/capture}]
-    [{/if}]
-[{/block}]
-
 [{block name="details_tabs_media"}]
     [{if $oView->getMediaFiles() || $oDetailsProduct->oxarticles__oxfile->value}]
         [{capture append="tabs"}]<a href="#media" data-toggle="tab">[{$oViewConf->getRoxidIcon('media')}] [{oxmultilang ident="MEDIA"}]</a>[{/capture}]
