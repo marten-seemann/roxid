@@ -11,6 +11,8 @@ if ( !function_exists( "getGeneratorInstanceName" ) ) {
   }
 }
 
+require_once __DIR__ . "/../../../bootstrap.php";
+
 $dirname = dirname(__FILE__);
 //* BEGIN DEV *//
 // include the file from the current oxbasedir, even if the roxid_getimg.php might be symlinked
@@ -31,15 +33,13 @@ function canonicalize($address) {
 
 $dirname = canonicalize(dirname($_SERVER['SCRIPT_FILENAME']));
 //* END DEV *//
-require_once($dirname."/../../../core/oxdynimggenerator.php");
-
 
 $file = dirname(__FILE__)."/../../responsive_slider/utils/getimg.php";
 if(file_exists($file)) {
   require(dirname(__FILE__)."/../../responsive_slider/utils/getimg.php");
 }
 else {
-  class sliderdynimggenerator extends oxdynimggenerator { }
+  class sliderdynimggenerator extends OxidEsales\EshopCommunity\Core\DynamicImageGenerator { }
 }
 
 class roxiddynimggenerator extends sliderdynimggenerator {
@@ -53,21 +53,19 @@ class roxiddynimggenerator extends sliderdynimggenerator {
   public function _getImageUri() {
     $uri = parent::_getImageUri();
     $path_parts = pathinfo($uri);
-    // var_dump($path_parts);
-    // die;
     $filename = $path_parts['filename'];
-
+    
     if(substr($filename, -3) == "@2x") {
       $ext = $path_parts['extension'];
       $path = $path_parts['dirname'];
-
+      
       $dir = substr($path, strrpos($path, "/")+1);
       $values = explode("_", $dir);
       $quality = $values[2];
       $new_path = substr($path, 0, strrpos($path, "/")+1).(2*$values[0])."_".(2*$values[1])."_".$quality;
       $uri = $new_path."/".str_replace("@2x", "", $filename).".".$ext;
     }
-
+    
     return $uri;
   }
 
@@ -93,7 +91,6 @@ class roxiddynimggenerator extends sliderdynimggenerator {
 
       $source_imagesize = getimagesize($sImageSource);
       $source_width = $source_imagesize[0];
-      // $source_height = $source_imagesize[1];
 
       // image quality will be reduced by $factor
       $factor = 1;
@@ -101,103 +98,87 @@ class roxiddynimggenerator extends sliderdynimggenerator {
 
       $sImageTarget = substr($target_path_parts['dirname'], 0, strrpos($target_path_parts['dirname'], "/")+1) . $target_width . "_" . $target_height . "_" . intval($target_quality / $factor)."/". $target_path_parts['basename'];
 
-      $path = parent::_generateImage( $sImageSource, $sImageTarget );
+      $path = parent::_generateImage($sImageSource, $sImageTarget);
       $new_path = parent::_getShopBasePath().parent::_getImageUri();
       if(!is_dir(dirname($new_path))) mkdir(dirname($new_path));
       rename($path, $new_path);
       return $new_path;
-    }
-    else {
-      return parent::_generateImage( $sImageSource, $sImageTarget );
+    } else {
+      return parent::_generateImage($sImageSource,$sImageTarget);
     }
   }
 
-  /**
+    /**
    * Checks if main folder matches requested
    *
-   * @param string $sPath image path name to check
+   * @param string $path image path name to check
    *
    * @return bool
    */
-  protected function _isValidPath( $sPath )
-  {
-      $blValid = false;
+  protected function _isValidPath($path) {
+    $valid = false;
 
-      list( $iWidth, $iHeight, $sQuality ) = $this->_getImageInfo();
-      if ( $iWidth && $iHeight && $sQuality ) {
+    list($width, $height, $quality) = $this->_getImageInfo();
+    if ($width && $height && $quality) {
+      $config = \OxidEsales\Eshop\Core\Registry::getConfig();
+      $db = \OxidEsales\Eshop\Core\DatabaseProvider::getDb(\OxidEsales\Eshop\Core\DatabaseProvider::FETCH_MODE_ASSOC);
 
-          $oConfig = getConfig();
-          $oDb = oxDb::getDb( oxDb::FETCH_MODE_ASSOC );
-
-          // parameter names
-          $sNames = '';
-          foreach ( $this->_aConfParamToPath as $sParamName => $sPathReg ) {
-              if ( preg_match( $sPathReg, $sPath ) ) {
-                  if ( $sNames ) {
-                      $sNames .= ", ";
-                  }
-                  $sNames .= $oDb->quote( $sParamName );
-
-                  if ( $sParamName == "sManufacturerIconsize" || $sParamName == "sCatIconsize" ) {
-                      $sNames .= ", " . $oDb->quote( "sIconsize" );
-                  }
-              }
+      // parameter names
+      $names = [];
+      foreach ($this->_aConfParamToPath as $paramName => $pathReg) {
+        if (preg_match($pathReg, $path)) {
+          $names[] = $db->quote($paramName);
+          if ($paramName == "sManufacturerIconsize" || $paramName == "sCatIconsize") {
+            $names[] = $db->quote("sIconsize");
           }
-
-          // any name matching path?
-          if ( $sNames ) {
-
-              $sDecodeField = $oConfig->getDecodeValueQuery();
-
-              // selecting shop which image quality matches user given
-              $sQ = "select oxshopid from oxconfig where (oxvarname = 'sDefaultImageQuality' or oxvarname = 'sDefaultImageQualityPhone')";
-
-              $aShopIds = $oDb->getAll( $sQ );
-
-              // building query:
-              // shop id
-              $sShopIds = '';
-              foreach ( $aShopIds as $aShopId ) {
-
-                  // probably here we can resolve and check shop id to shorten check?
-
-
-                  if ( $sShopIds ) {
-                      $sShopIds .= ", ";
-                  }
-                  $sShopIds .= $oDb->quote( $aShopId["oxshopid"] );
-              }
-
-              // any shop matching quality
-              if ( $sShopIds ) {
-
-                  //
-                  $sCheckSize1 = "$iWidth*$iHeight";
-                  $sCheckSize2 = intval($iWidth/2)."*".intval($iHeight/2); // for retina images
-
-                  // selecting config variables to check
-                  $sQ = "select oxvartype, {$sDecodeField} as oxvarvalue from oxconfig
-                         where oxvarname in ( {$sNames} ) and oxshopid in ( {$sShopIds} ) order by oxshopid";
-
-                  $aValues = $oDb->getAll( $sQ );
-                  foreach ( $aValues as $aValue ) {
-                      $aConfValues = (array) $oConfig->decodeValue( $aValue["oxvartype"], $aValue["oxvarvalue"] );
-                      foreach ( $aConfValues as $sValue ) {
-                          if ( strcmp( $sCheckSize1, $sValue ) == 0 ) {
-                              $blValid = true;
-                              break;
-                          }
-                          if ( strcmp( $sCheckSize2, $sValue ) == 0 ) {
-                              $blValid = true;
-                              break;
-                          }
-                      }
-                  }
-              }
-          }
+        }
       }
-      return $blValid;
-  }
+      $names = implode(', ', $names);
 
+      // any name matching path?
+      if ($names) {
+        $decodeField = $config->getDecodeValueQuery();
+
+        // selecting shop which image quality matches user given
+        $q = "select oxshopid from oxconfig where (oxvarname = 'sDefaultImageQuality' or oxvarname = 'sDefaultImageQualityPhone') and
+          {$decodeField} = " . $db->quote($quality);
+
+        $shopIdsArray = $db->getAll($q);
+
+        // building query:
+        // shop id
+        $shopIds = implode(', ', array_map(function ($shopId) use ($db) {
+            // probably here we can resolve and check shop id to shorten check?
+            return $db->quote($shopId['oxshopid']);
+        }, $shopIdsArray));
+
+
+        // any shop matching quality
+        if ($shopIds) {
+          $checkSize1 = "$width*$height";
+          $checkSize2 = intval($width/2)."*".intval($height/2); // for retina images = "$width*$height";
+
+          // selecting config variables to check
+          $q = "select oxvartype, {$decodeField} as oxvarvalue from oxconfig
+            where oxvarname in ( {$names} ) and oxshopid in ( {$shopIds} ) order by oxshopid";
+          $values = $db->getAll($q);
+          foreach ($values as $value) {
+            $confValues = (array) $config->decodeValue($value["oxvartype"], $value["oxvarvalue"]);
+            foreach ($confValues as $confValue) {
+              if (strcmp($checkSize1, $confValue) == 0) {
+                $valid = true;
+                break;
+              }
+              if (strcmp($checkSize2, $confValue) == 0) {
+                $valid = true;
+                break;
+              }
+            }
+          }
+        }
+      }
+    }
+    return $valid;
+  }
 }
 require_once getShopBasePath()."getimg.php";
