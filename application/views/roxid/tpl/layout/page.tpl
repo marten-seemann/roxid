@@ -77,7 +77,6 @@
 
     [{include file="layout/footer.tpl"}]
 
-    [{include file="widget/facebook/init.tpl"}]
     [{if $oView->isPriceCalculated() }]
         [{block name="layout_page_vatinclude"}]
         [{oxifcontent ident="oxdeliveryinfo" object="oCont"}]

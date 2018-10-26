@@ -26,23 +26,6 @@
         [{/if}]
     [{/block}]
 
-    [{block name="head_meta_open_graph"}]
-        [{if $oViewConf->getFbAppId()}]
-            <meta property="og:site_name" content="[{$oViewConf->getBaseDir()}]">
-            <meta property="fb:app_id" content="[{$oViewConf->getFbAppId()}]">
-            <meta property="og:title" content="[{ $_sMetaTitlePrefix }][{if $_sMetaTitlePrefix && $_sMetaTitle }] | [{/if}][{$_sMetaTitle|strip_tags}][{if $_sMetaTitleSuffix && ($_sMetaTitlePrefix || $_sMetaTitle) }] | [{/if}][{$_sMetaTitleSuffix}] [{if $_sMetaTitlePageSuffix }] | [{ $_sMetaTitlePageSuffix }] [{/if}]">
-            [{if $oViewConf->getActiveClassName() == 'details' }]
-                <meta property="og:type" content="product">
-                <meta property="og:image" content="[{$oView->getActPicture()}]">
-                <meta property="og:url" content="[{$oView->getCanonicalUrl()}]">
-            [{else}]
-                <meta property="og:type" content="website">
-                <meta property="og:image" content="[{$oViewConf->getImageUrl('basket.png')}]">
-                <meta property="og:url" content="[{$oViewConf->getCurrentHomeDir()}]">
-            [{/if}]
-        [{/if}]
-    [{/block}]
-
     [{assign var="canonical_url" value=$oView->getCanonicalUrl()}]
     [{block name="head_link_canonical"}]
         [{if $canonical_url }]
@@ -88,7 +71,7 @@
 [{assign var="firstload" value=false}]
 <!DOCTYPE HTML>
 [{assign var="sLanguage" value=$oView->getActiveLangAbbr()}]
-<html [{if $sLanguage}]lang="[{$sLanguage}]"[{/if}] [{if $oViewConf->getShowFbConnect() }]xmlns:fb="http://www.facebook.com/2008/fbml"[{/if}]>
+<html [{if $sLanguage}]lang="[{$sLanguage}]"[{/if}]>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 

@@ -94,21 +94,6 @@ form {
   z-index : 5002;
 }
 
-// make the facebook comment plugin responsive, see http://stackoverflow.com/questions/6500424/is-it-possible-to-set-a-fluid-width-for-facebooks-social-plugins
-.fb-comments, .fb-facepile {
-  &, iframe[style] {
-    width: 100% !important;
-  }
-
-  &, span, &.fb_iframe_widget span iframe {
-    width: 100% !important;
-  }
-}
-
-.fbEnableButton {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
 // submenu items in navbar
 .dropdown-submenu {
   position: relative;
@@ -380,7 +365,7 @@ legend {
   }
 
   // login box in the box-header
-  .z-loginbox, .z-loginbox-facebook {
+  .z-loginbox {
     margin: 5px 10px;
   }
 
@@ -391,13 +376,6 @@ legend {
 
     .alert {
       padding: 10px;
-    }
-  }
-
-  .z-loginbox-facebook {
-    > span {
-      float: left;
-      margin-right: 10px;
     }
   }
 }
@@ -844,7 +822,7 @@ footer {
     padding-top: 15px;
   }
 
-  .z-facebook, .z-deliveryinfo {
+  .z-deliveryinfo {
     margin-bottom: 25px;
     margin-right: 10px;
 

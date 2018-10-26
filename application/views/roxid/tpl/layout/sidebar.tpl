@@ -41,17 +41,6 @@
         [{/if}]
     [{/block}]
 
-    [{block name="sidebar_facebookfacepile"}]
-          [{if $oView->isActive('FbFacepile') && $oView->isConnectedWithFb()}]
-            <div id="facebookFacepile" class="z-sidebarblock">
-                <h3>[{oxmultilang ident="FACEBOOK_FACEPILE"}]</h3>
-                <div class="z-sidebarcontent" id="productFbFacePile">
-                    [{include file="widget/facebook/enable.tpl" source="widget/facebook/facepile.tpl" ident="#productFbFacePile" type="text"}]
-                </div>
-            </div>
-        [{/if}]
-    [{/block}]
-
     [{*block name="sidebar_shopluperatings"}]
         [{if $oView->getClassName() eq "start"}]
            [{include file="widget/shoplupe/ratings.tpl" }]

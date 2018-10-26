@@ -47,14 +47,6 @@
                         [{$deliveryinfo}]
                     [{/block}]
 
-                    [{block name="footer_fblike"}]
-                        [{if $oView->isActive('FbLike') && $oViewConf->getFbAppId()}]
-                            <div class="z-facebook hidden-xs clear" id="footerFbLike">
-                                [{include file="widget/facebook/enable.tpl" source="widget/facebook/like.tpl" ident="#footerFbLike" parent="footer"}]
-                            </div>
-                        [{/if}]
-                    [{/block}]
-
                     [{if $oView->showNewsletter()}]
                         <div class="visible-lg">
                             [{include file="widget/footer/newsletter.tpl"}]

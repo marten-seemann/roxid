@@ -178,9 +178,7 @@
                     </div>
                     <div class="clear"></div>
                 [{/block}]
-                [{block name="details_productmain_social"}]
-                    [{include file="page/details/inc/social.tpl"}]
-                [{/block}]
+                [{block name="details_productmain_social"}][{/block}]
                 <div class="clear"></div>
             </div>
 

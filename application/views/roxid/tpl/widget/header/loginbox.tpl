@@ -49,16 +49,6 @@
                 </div>
             </form>
         </li>
-        [{if $oViewConf->getShowFbConnect()}]
-            <li role="menuitem" class="divider"></li>
-            <li role="menuitem" class="z-loginbox-facebook">
-                <span>[{ oxmultilang ident="LOGIN_WITH" suffix="COLON"}]</span>
-                <div id="loginboxFbConnect">
-                    [{include file="widget/facebook/enable.tpl" source="widget/facebook/connect.tpl" ident="#loginboxFbConnect" }]
-                </div>
-                <div class="clear"></div>
-            </li>
-        [{/if}]
         [{if !$oxcmp_user}]
             <li role="menuitem" class="divider"></li>
             <li role="menuitem">

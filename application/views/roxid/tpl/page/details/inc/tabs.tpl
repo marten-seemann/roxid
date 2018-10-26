@@ -133,34 +133,6 @@
     [{/block}]
 [{/if}]
 
-[{block name="details_tabs_fbcomments"}]
-    [{if $oView->isActive('FbComments') && $oViewConf->getFbAppId()}]
-        [{capture append="FBtabs"}]<a href="#productFbComments" data-toggle="tab">[{$oViewConf->getRoxidIcon('facebook')}] [{oxmultilang ident="FACEBOOK_COMMENTS"}]</a>[{/capture}]
-        [{assign var='_fbScript' value="http://connect.facebook.net/en_US/all.js#appId="|cat:$oViewConf->getFbAppId()|cat:"&amp;xfbml=1"}]
-        [{capture append="FBtabsContent"}]
-            <div id="productFbComments" class="tab-pane [{if !$fbFirstTabContentPrinted}]active[{/if}]">
-                [{include file="widget/facebook/enable.tpl" source="widget/facebook/comments.tpl" ident="#productFbComments" script=$_fbScript type="text"}]
-            </div>
-            [{assign var="fbFirstTabContentPrinted" value=true}]
-        [{/capture}]
-    [{/if}]
-[{/block}]
-
-[{block name="details_tabs_fbinvite"}]
-    [{if $oView->isActive('FbInvite') && $oViewConf->getFbAppId()}]
-        [{capture append="FBtabs"}]<a href="#productFbInvite" data-toggle="tab">[{$oViewConf->getRoxidIcon('facebook')}] [{oxmultilang ident="FACEBOOK_INVITE"}]</a>[{/capture}]
-        [{capture append="FBtabsContent"}]
-            <div id="productFbInvite" class="tab-pane [{if !$fbFirstTabContentPrinted}]active[{/if}]">
-                <fb:serverfbml width="560px" id="productFbInviteFbml">
-                    [{include file="widget/facebook/enable.tpl" source="widget/facebook/invite.tpl" ident="#productFbInviteFbml" type="text"}]
-                </fb:serverfbml>
-            </div>
-            [{assign var="fbFirstTabContentPrinted" value=true}]
-        [{/capture}]
-    [{/if}]
-[{/block}]
-
-
 [{block name="details_tabs_main"}]
     [{if $tabs}]
         <div class="hidden-xs">
@@ -190,25 +162,6 @@
                     [{$panelsContent.$index}]
                 </div>
             [{/foreach}]
-        </div>
-    [{/if}]
-[{/block}]
-
-
-
-[{block name="details_tabs_facebook"}]
-    [{if $FBtabs}]
-        <div class="hidden-xs">
-            <ul id="itemFbTabs" class="nav nav-tabs">
-                [{foreach from=$FBtabs item="FBtab" name="tabs"}]
-                    <li class="fbTab [{if $smarty.foreach.tabs.first}]active[{/if}]">[{$FBtab}]</li>
-                [{/foreach}]
-            </ul>
-            <div class="tab-content">
-                [{foreach from=$FBtabsContent item="FBtabContent"}]
-                    [{$FBtabContent}]
-                [{/foreach}]
-            </div>
         </div>
     [{/if}]
 [{/block}]
