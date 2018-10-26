@@ -110,10 +110,6 @@
                                                     [{/if}]
                                         [{/block}]
                                     [{/foreach}]
-
-                                    [{* TRUSTED SHOPS BEGIN *}]
-                                    [{include file="page/checkout/inc/trustedshops.tpl"}]
-                                    [{* TRUSTED SHOPS END *}]
                                 </fieldset>
                             [{/if}]
                             <button type="submit" id="paymentNextStepBottom" style="display: none;">[{ oxmultilang ident="CONTINUE_TO_NEXT_STEP" }] [{$oViewConf->getRoxidIcon('step_next')}]</button>

@@ -4,7 +4,6 @@
     </div>
     <div class="panel-body">
         [{block name="partner_logos"}]
-            [{include file="widget/trustedshops/info.tpl" }]
         [{/block}]
     </div>
 </div>
