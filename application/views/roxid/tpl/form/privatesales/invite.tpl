@@ -7,8 +7,6 @@
     <input type="hidden" name="cl" value="invite">
     <input type="hidden" name="anid" value="[{ $_oProduct->oxarticles__oxnid->value }]">
     <input type="hidden" name="CustomError" value='invite'>
-    [{assign var="oCaptcha" value=$oView->getCaptcha() }]
-    <input type="hidden" name="c_mach" value="[{$oCaptcha->getHash()}]">
     <fieldset>
         <legend>[{ oxmultilang ident="SEND_INVITE_TO" suffix="COLON" }]</legend>
         <div class="form-group">
@@ -85,28 +83,8 @@
                 <div class="help-block with-errors"></div>
             </div>
         </div>
-        <div class="form-group verify">
-            <label class="control-label col-lg-5 col-sm-6 req">
-                [{block name="captcha_label"}]
-                    [{ oxmultilang ident="VERIFICATION_CODE" suffix="COLON" }]
-                [{/block}]
-            </label>
-            <div class="col-lg-16 col-sm-18">
-                [{block name="captcha_body"}]
-                    [{assign var="oCaptcha" value=$oView->getCaptcha() }]
-                    <div class="col-xs-7">
-                        [{if $oCaptcha->isImageVisible()}]
-                            <img src="[{$oCaptcha->getImageUrl()}]" alt="">
-                        [{else}]
-                            <span class="verificationCode" id="verifyTextCode">[{$oCaptcha->getText()}]</span>
-                        [{/if}]
-                    </div>
-                    <div class="col-xs-17">
-                        <input type="text" class="form-control" name="c_mac" value="" required>
-                    </div>
-                [{/block}]
-                <div class="help-block with-errors"></div>
-            </div>
-        </div>
+        
+        [{block name="captcha_form"}][{/block}]
+
     </fieldset>
 </div>

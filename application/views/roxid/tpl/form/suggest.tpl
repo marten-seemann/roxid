@@ -8,8 +8,6 @@
         <input type="hidden" name="cl" value="suggest">
         <input type="hidden" name="anid" value="[{ $_oProduct->oxarticles__oxnid->value }]">
         <input type="hidden" name="CustomError" value='suggest'>
-        [{assign var="oCaptcha" value=$oView->getCaptcha() }]
-        <input type="hidden" name="c_mach" value="[{$oCaptcha->getHash()}]">
         <fieldset>
             <legend>[{ oxmultilang ident="CARD_TO" }]</legend>
             <div class="form-group">
@@ -58,31 +56,9 @@
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-sm-6 req">
-                    [{block name="captcha_label"}]
-                        [{ oxmultilang ident="VERIFICATION_CODE" suffix="COLON" }]
-                    [{/block}]
-                </label>
-                <div class="col-sm-18">
-                    [{block name="captcha_body"}]
-                        <div class="row">
-                            <div class="col-xs-7">
-                                [{assign var="oCaptcha" value=$oView->getCaptcha() }]
-                                [{if $oCaptcha->isImageVisible()}]
-                                    <img src="[{$oCaptcha->getImageUrl()}]" alt="">
-                                [{else}]
-                                    <span class="verificationCode" id="verifyTextCode">[{$oCaptcha->getText()}]</span>
-                                [{/if}]
-                            </div>
-                            <div class="col-xs-17">
-                                <input type="text" class="form-control" name="c_mac" value="" required>
-                            </div>
-                        </div>
-                    [{/block}]
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
+
+            [{block name="captcha_form"}][{/block}]
+
             <div class="form-group">
                 <div class="col-sm-18">
                     <button class="btn btn-primary" type="submit">[{$oViewConf->getRoxidIcon('product_recommend')}] [{ oxmultilang ident="SEND" }]</button>

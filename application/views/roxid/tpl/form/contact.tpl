@@ -5,8 +5,6 @@
         [{ $oViewConf->getHiddenSid() }]
         <input type="hidden" name="fnc" value="send"/>
         <input type="hidden" name="cl" value="contact"/>
-        [{assign var="oCaptcha" value=$oView->getCaptcha() }]
-        <input type="hidden" name="c_mach" value="[{$oCaptcha->getHash()}]"/>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-6 radio">[{ oxmultilang ident="TITLE" suffix="COLON" }]</label>
@@ -53,31 +51,9 @@
             <div class="help-block with-errors"></div>
         </div>
     </div>
-    <div class="form-group">
-        <label class="control-label col-sm-6 req">
-            [{block name="captcha_label"}]
-                [{ oxmultilang ident="VERIFICATION_CODE" suffix="COLON" }]
-            [{/block}]
-        </label>
-        <div class="col-sm-18">
-            [{block name="captcha_body"}]
-                <div class="row">
-                    <div class="col-xs-7">
-                        [{assign var="oCaptcha" value=$oView->getCaptcha() }]
-                        [{if $oCaptcha->isImageVisible()}]
-                            <img src="[{$oCaptcha->getImageUrl()}]" alt="">
-                        [{else}]
-                            <span class="verificationCode" id="verifyTextCode">[{$oCaptcha->getText()}]</span>
-                        [{/if}]
-                    </div>
-                    <div class="col-xs-17">
-                        <input type="text" name="c_mac" value="" class="form-control" required>
-                    </div>
-                </div>
-            [{/block}]
-            <div class="help-block with-errors"></div>
-        </div>
-    </div>
+    
+    [{block name="captcha_form"}][{/block}]
+
     <div class="form-group">
         <div class="col-sm-offset-6 col-sm-18">
             <button class="btn btn-primary" type="submit">[{ oxmultilang ident="SEND" }]</button>
