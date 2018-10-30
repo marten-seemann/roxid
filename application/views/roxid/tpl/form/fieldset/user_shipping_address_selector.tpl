@@ -23,7 +23,39 @@
                     [{/if}]
                 </div>
             </div>
-
         [{/foreach}]
     </div>
+
+    <button id="delete-shipping-address-button" class="btn btn-danger btn-sm pull-right delete-shipping-address-button" title="[{oxmultilang ident="DELETE_SHIPPING_ADDRESS"}]"><i class="fa fa-trash"></i> [{oxmultilang ident="DELETE_SHIPPING_ADDRESS"}]</button>
+    [{capture assign="deleteaddrjs"}]
+        var deleteButton = $("#delete-shipping-address-button");
+        var activeAddressId = $("input[name=oxaddressid]:checked").val();
+
+        if($(".z-delivery-addresses input[type=radio]:visible").length == 0) {
+            deleteButton.hide();
+        }
+        
+        deleteButton.bind("click", function(ev) {
+            ev.preventDefault();
+            bootbox.confirm({
+                message: "[{oxmultilang ident="DELETE_SHIPPING_ADDRESS_CONFIRMATION"}]",
+                buttons: {
+                    confirm: {
+                        label: '[{oxmultilang ident="DELETE_SHIPPING_ADDRESS"}]',
+                        className: 'btn-danger'
+                    },
+                    cancel: {
+                        label: '[{oxmultilang ident="CANCEL"}]',
+                    }
+                },
+                callback: function(result) {
+                    if(!result) { return; }
+                    window.delete_shipping_address_modal_form_[{$delivadr->oxaddress__oxid->value}].submit();
+                    return false;
+                }
+            });
+        });
+    [{/capture}]
+
+    [{oxscript add=$deleteaddrjs}]
 [{/if}]

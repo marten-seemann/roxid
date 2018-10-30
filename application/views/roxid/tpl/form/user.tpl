@@ -67,4 +67,5 @@
         </div>
         <button id="accUserSaveTop" class="btn btn-primary" name="userform" type="submit">[{$oViewConf->getRoxidIcon('save')}] [{ oxmultilang ident="SAVE" }]</button>
     </form>
+    [{include file="form/fieldset/delete_shipping_address_modal.tpl"}]
 [{/block}]

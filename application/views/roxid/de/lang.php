@@ -209,5 +209,15 @@ $aLang = array(
 'EMAIL_SENDEDNOW_HTML_SHIPMENTTRACKINGURL'                    => 'hier klicken',
 'PAGE_INFO_CLEARCOOKIE_TITLE'                                 => 'Information über Cookies',
 'PAGE_INFO_CLEARCOOKIE_CONTENT'                               => 'Sie haben sich entschieden, keine Cookies von unserem Online-Shop zu akzeptieren. Die Cookies wurden gelöscht. Sie können in den Einstellungen Ihres Browsers die Verwendung von Cookies deaktivieren und den Online-Shop mit einigen funktionellen Einschränkungen nutzen. Sie können auch zurück zum Shop gehen, ohne die Einstellungen zu ändern, und den vollen Funktionsumfang des Online-Shops genießen.<br/><br/>Informationen zu Cookies auf Wikipedia: <a href="http://de.wikipedia.org/wiki/HTTP-Cookie"><strong>http://de.wikipedia.org/wiki/HTTP-Cookie</strong></a>',
-
+'DELETE_MY_ACCOUNT_WARNING'                                   => 'Dieser Vorgang kann nicht rückgängig gemacht werden. Alle persönlichen Daten werden dauerhaft gelöscht.',
+'DELETE_MY_ACCOUNT'                                           => 'Konto löschen',
+'DELETE_MY_ACCOUNT_CONFIRMATION_QUESTION'                     => 'Sind Sie sicher, dass Sie Ihr Konto löschen wollen?',
+'DELETE_MY_ACCOUNT_CANCEL'                                    => 'Abbrechen',
+'DELETE_MY_ACCOUNT_SUCCESS'                                   => 'Ihr Konto wurde gelöscht',
+'DELETE_MY_ACCOUNT_ERROR'                                     => 'Das Konto konnte nicht gelöscht werden',
+'DELETE_REVIEW_AND_RATING'                                    => 'Bewertung und Sterne-Rating löschen',
+'REVIEWS_NOT_AVAILABLE'                                       => 'Es liegen keine Bewertungen vor',
+'DELETE_REVIEW_CONFIRMATION_QUESTION'                         => 'Sind Sie sicher, dass Sie die Bewertung löschen wollen?',
+'DELETE_SHIPPING_ADDRESS'                                     => 'Löschen',
+'DELETE_SHIPPING_ADDRESS_CONFIRMATION'                        => 'Lieferadresse löschen?',
 );

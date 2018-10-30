@@ -17,5 +17,10 @@
         [{if $oView->isEnabledDownloadableFiles()}]
             <li [{if $active_link == "downloads"}]class="active"[{/if}]><a href="[{ oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=account_downloads" }]" rel="nofollow">[{$oViewConf->getRoxidIcon('downloads')}] [{ oxmultilang ident="MY_DOWNLOADS" }]</a></li>
         [{/if}]
+        [{if $oView->isUserAllowedToManageOwnReviews()}]
+            <li class="[{if $active_link == "reviewlist"}] active[{/if}]" id="account_menu-my_reviews">
+                <a href="[{oxgetseourl ident=$oViewConf->getSslSelfLink()|cat:"cl=account_reviewlist"}]" title="[{oxmultilang ident="MY_REVIEWS"}]">[{$oViewConf->getRoxidIcon("write_review")}] [{oxmultilang ident="MY_REVIEWS"}]</a>
+            </li>
+        [{/if}]
     [{/block}]
 </ul>
