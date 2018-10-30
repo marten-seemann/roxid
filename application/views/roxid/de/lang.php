@@ -177,7 +177,6 @@ $aLang = array(
 'PAGE_WISHLIST_PRODUCTS_PRODUCTS2'                            => " gewünscht. Wenn Sie ihr/ihm eine Freude machen wollen, dann kaufen Sie einen oder mehrere von diesen Artikeln.",
 'WIDGET_FOOTER_MANUFACTURERS_MORE'                            => "Mehr...",
 'WIDGET_PRODUCT_PRODUCT_DETAILS'                              => "Produktdetails",
-'WIDGET_SERVICES_GUESTBOOK'                                   => "Gästebuch",
 'WIDGET_SERVICES_HOME'                                        => "Home",
 'WIDGET_TRUSTEDSHOPS_ITEM_ALTTEXT'                            => "Mehr Informationen",
 'allBrands'                                                   => "Alle Marken",
