@@ -1,5 +1,7 @@
 'use strict'
 
+sass = require('node-sass')
+
 module.exports = (grunt, options) ->
   paths = options.paths
   opts = options.conf.libs_js
@@ -51,6 +53,7 @@ module.exports = (grunt, options) ->
     sass:
       libs_css:
         options:
+          implementation: sass
           style: 'expanded'
           sourcemap: 'auto'
         expand: true
