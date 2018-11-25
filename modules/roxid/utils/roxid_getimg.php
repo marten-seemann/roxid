@@ -11,9 +11,10 @@ if ( !function_exists( "getGeneratorInstanceName" ) ) {
   }
 }
 
-require_once __DIR__ . "/../../../bootstrap.php";
+// use $_SERVER["SCRIPT_FILENAME"] instead of __DIR__, since __DIR__ resolves symlinks
+$dirname = dirname($_SERVER["SCRIPT_FILENAME"]);
+require_once $dirname . "/../../../bootstrap.php";
 
-$dirname = dirname(__FILE__);
 //* BEGIN DEV *//
 // include the file from the current oxbasedir, even if the roxid_getimg.php might be symlinked
 // probably only the case in dev environment
