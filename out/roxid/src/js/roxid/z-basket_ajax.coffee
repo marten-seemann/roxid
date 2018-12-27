@@ -104,8 +104,8 @@ $.fn.extend
       counter = parseInt($("#basket_item_count").val())
       price = $("#basket_total_price").val()
       if isNaN(counter) then counter = 0
+      $(".z-basket-itemcount").text(counter)
       if counter == 0 then $(".z-basket-itemcounter").hide()
-      else $(".z-basket-itemcount").text(counter)
       price = '' unless price?
       $(".z-basket-price").text(price)
 
