@@ -49,16 +49,16 @@
                                                         <a rel="nofollow" href="[{$basketitem->getLink()}]">[{$basketitem->getTitle()}]</a>
                                                     </td>
                                                     <td class="z-wrapping-price">
-                                                        <ul id="wrapp_[{$smarty.foreach.wrappArt.iteration}]" class="list-unstyled">
+                                                        <ul class="list-unstyled">
                                                             <li>
-                                                                <input class="radiobox" type="radio" name="wrapping[[{$basketindex}]]" id="wrapping_[{$basketindex}]" value="0" [{ if !$basketitem->getWrappingId()}]CHECKED[{/if}]>
+                                                                <input class="radiobox" type="radio" name="wrapping[[{$basketindex}]]" value="0" [{ if !$basketitem->getWrappingId()}]CHECKED[{/if}]>
                                                                 <label for="wrapping_[{$basketindex}]">[{ oxmultilang ident="NONE" }]</label>
                                                                 <span class="z-wrapping-price">[{oxprice price=0 currency=$currency}]</span>
                                                             </li>
                                                             [{assign var="ictr" value="1"}]
                                                             [{foreach from=$oView->getWrappingList() item=wrapping name=Wraps}]
                                                                 <li>
-                                                                    <input class="radiobox" type="radio" name="wrapping[[{$basketindex}]]" id="wrapping_[{$wrapping->oxwrapping__oxid->value}]" value="[{$wrapping->oxwrapping__oxid->value}]" [{ if $basketitem->getWrappingId() == $wrapping->oxwrapping__oxid->value}]CHECKED[{/if}]>
+                                                                    <input class="radiobox" type="radio" name="wrapping[[{$basketindex}]]" value="[{$wrapping->oxwrapping__oxid->value}]" [{ if $basketitem->getWrappingId() == $wrapping->oxwrapping__oxid->value}]CHECKED[{/if}]>
                                                                     [{if $wrapping->oxwrapping__oxpic->value }]
                                                                         <img src="[{$wrapping->getPictureUrl()}]" alt="[{$wrapping->oxwrapping__oxname->value}]">
                                                                         <div class="clear visible-xs"></div>
