@@ -67,9 +67,6 @@ find . -type f -name "README.md" -delete
 find . -type f -name "UPGRADE.md" -delete
 rm -rf .git .gitignore .ackrc .sass-cache *.sublime-project *.sublime-workspace build/
 
-echo "Removing development code from roxid_getimg.php"
-sed -i '' '/BEGIN DEV/,/END DEV/d' modules/roxid/utils/roxid_getimg.php
-
 
 # install bower modules
 echo "Installing Bower modules..."
