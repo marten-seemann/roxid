@@ -83,9 +83,6 @@ if [ "$GRUNT" = true ]; then
   echo "Running Grunt..."
   grunt all
   rm -rf node_modules .sass-cache
-
-  # remove asset compiler assets src
-  rm -rf modules/roxid/asset_compiler/assets/src
 fi
 
 echo "Copying logo and favicon from ROXID to ROXID_mod"
