@@ -59,10 +59,6 @@ out/roxid/build
 !/modules/roxid/*/*
 !/modules/roxid/*/*/*
 /modules/roxid/.DS_Store
-/modules/roxid/asset_compiler/.htaccess
-/modules/roxid/asset_compiler/.htaccess2
-/modules/roxid/asset_compiler/.htpasswd
-/modules/roxid/asset_compiler/assets/build
 /node_modules
 /out/.htaccess
 /out/admin

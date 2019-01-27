@@ -69,18 +69,13 @@ module.exports = (grunt) ->
   # Tasks for building the (minified) ROXID
   grunt.registerTask 'minify', [ 'clean:roxid_minify', 'uglify:all_but_roxid', 'uglify:roxid', 'cssmin:roxid' ]
 
-
-  # Tasks for building the assets needed by the ROXID Asset Compiler
-  grunt.registerTask 'asset_compiler', [ 'clean:asset_compiler', 'coffeelint:asset_compiler', 'coffee:asset_compiler', 'copy:asset_compiler', 'less:asset_compiler' ]
-  grunt.registerTask 'asset_compiler_productive', [ 'asset_compiler', 'uglify:asset_compiler', 'cssmin:asset_compiler', 'clean:asset_compiler_productive' ]
-
   # Task aliases
   grunt.registerTask 'default', [ 'selfcheck', 'libs_css', 'bootstrap_css', 'roxid_css', 'roxid_js', 'libs_productpage_js', 'libs_js', 'fonts' ]
   grunt.registerTask 'productive', [ 'default', 'minify', 'favicons' ]
 
   # clean everything, build everyting, minify everyting
   # should be used by the ROXID build script
-  grunt.registerTask 'all', [ 'clean:all', 'productive', 'asset_compiler_productive', 'minify' ]
+  grunt.registerTask 'all', [ 'clean:all', 'productive', 'minify' ]
 
 removeDuplicates = (ar) ->
   if ar.length == 0

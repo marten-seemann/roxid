@@ -6,11 +6,9 @@ src:
   js: 'out/roxid/src/js'
   css: 'out/roxid/src/css'
   favicons: 'out/roxid/src/favicons'
-  asset_compiler: 'modules/roxid/asset_compiler/assets/src'
 dest:
   js: 'out/roxid/build/js'
   css: 'out/roxid/build/css'
   fonts: 'out/roxid/build/fonts'
   favicons: 'out/roxid/build/favicons'
   assets: 'out/roxid/build/assets'
-  asset_compiler: 'modules/roxid/asset_compiler/assets/build'

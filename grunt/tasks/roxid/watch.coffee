@@ -49,14 +49,6 @@ module.exports = (grunt, options) ->
         ]
         tasks: [ "less:roxid_css_#{colortheme}", "autoprefixer:roxid_css_#{colortheme}" ]
 
-      asset_compiler:
-        files: [
-          '<%= paths.src.asset_compiler %>/**/*.less'
-          '<%= paths.src.asset_compiler %>/**/*.coffee'
-          '<%= paths.src.asset_compiler %>/**/*.js'
-        ]
-        tasks: [ 'asset_compiler' ]
-
       livereload:
         options:
           livereload: 9369
