@@ -63,7 +63,7 @@ $.fn.extend
     save = ->
       oxAjax.ajax(
         basketForm
-        targetEl: [ $(basketForm).find("table.z-basket"), $("#basketSummary table") ]
+        targetEl: [ $(".z-basket-wrapper table.z-basket"), $(".z-basket-wrapper .z-basket-summary") ]
         iconPosEl: false
         additionalData:
           renderPartial: 1
