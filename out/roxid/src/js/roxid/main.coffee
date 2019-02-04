@@ -6,11 +6,12 @@ $ ->
   # start form validator
   $.fn.validator.Constructor.INPUT_SELECTOR += ':enabled:visible'
   document.startValidator = ->
-    $('form[data-toggle="roxid-validator"]').validator
-      disable: false
+    forms = $('form[data-toggle="roxid-validator"]')
+    forms.validator { disable: false } if forms.length > 0
 
   document.updateValidator = ->
-    $('form[data-toggle="roxid-validator"]').data("bs.validator").update()
+    forms = $('form[data-toggle="roxid-validator"]')
+    forms.data("bs.validator").update() if forms.length > 0
 
   document.startValidator()
 
