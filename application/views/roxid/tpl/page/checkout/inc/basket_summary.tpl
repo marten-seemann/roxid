@@ -131,7 +131,7 @@
                     [{if $oViewConf->isFunctionalityEnabled('blShowVATForPayCharge') }]
                         <tr>
                             <th>[{if $paymentCost->getPrice() >= 0}][{ oxmultilang ident="SURCHARGE" }][{else}][{ oxmultilang ident="DEDUCTION" }][{/if}] [{ oxmultilang ident="PAYMENT_METHOD" suffix="COLON"}]</th>
-                            <td id="basketPaymentNetto">>[{oxprice price=$paymentCost->getNettoPrice() currency=$currency }]</td>
+                            <td id="basketPaymentNetto">[{oxprice price=$paymentCost->getNettoPrice() currency=$currency }]</td>
                         </tr>
                     [{if $paymentCost->getVatValue()}]
                         <tr>
