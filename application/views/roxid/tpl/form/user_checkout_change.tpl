@@ -10,14 +10,7 @@
             <input type="hidden" name="lgn_cook" value="0">
             <input type="hidden" name="blshowshipaddress" value="1">
 
-            [{block name="user_checkout_change_next_step_top"}]
-                <div class="z-checkout-controls z-checkout-controls-top">
-                    <a href="[{ oxgetseourl ident=$oViewConf->getBasketLink() }]" class="btn btn-default" id="userBackStepTop">[{$oViewConf->getRoxidIcon('step_back')}] [{ oxmultilang ident="PREVIOUS_STEP" }]</a>
-                    <button id="userNextStepTop" class="btn btn-primary pull-right hidden-xs" name="userform" type="submit">[{ oxmultilang ident="CONTINUE_TO_NEXT_STEP" }] [{$oViewConf->getRoxidIcon('step_next')}]</button>
-                    <button id="userNextStepTop2" class="btn btn-primary pull-right visible-xs" name="userform" type="submit">[{ oxmultilang ident="CONTINUE_TO_NEXT_STEP_MOBILE" }] [{$oViewConf->getRoxidIcon('step_next')}]</button>
-                    <div class="clear"></div>
-                </div>
-            [{/block}]
+            [{block name="user_checkout_change_next_step_top"}][{/block}]
 
             <div class="row z-checkout-addresses">
                 <div class="col-md-12">
