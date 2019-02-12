@@ -43,6 +43,8 @@ out/roxid/build
 /build/ROXID*
 /build/*.zip
 /build/*.sql
+/config.inc.php.dist
+/cache
 /core/*
 !/core/utils
 /core/utils/*
@@ -53,6 +55,7 @@ out/roxid/build
 /export
 /log
 /improve_images
+/migration
 /modules/*
 !/modules/roxid
 !/modules/roxid/*
@@ -77,6 +80,7 @@ out/roxid/build
 /out/roxid_mod/src/css/theme_own.min.css
 /out/roxid_mod/src/css/bootstrap/bootstrap_own.css
 /out/roxid_mod/src/css/bootstrap/bootstrap_own.min.css
+/package-lock.json
 /oxid
 /setup
 /tmp
