@@ -153,4 +153,5 @@ $aLang = array(
 'DELETE_REVIEW_CONFIRMATION_QUESTION'                        => 'Are you sure you want to delete the review?',
 'DELETE_SHIPPING_ADDRESS'                                    => 'Delete',
 'DELETE_SHIPPING_ADDRESS_CONFIRMATION'                       => 'Delete shipping address?',
+'CHOOSE_DELIVERY'                                            => 'choose',
 );

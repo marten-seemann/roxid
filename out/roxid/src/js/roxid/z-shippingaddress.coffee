@@ -2,60 +2,67 @@ $ = jQuery
 
 $.fn.extend
   zShippingAddress: (options) ->
-    showShipAddress = $("#showShipAddress")
-    shippingAddress = $("#shippingAddress")
-    shippingAddressForm = $("#shippingAddressForm")
-    shippingAddressText = $("#shippingAddressText")
-    userChangeShippingAddress = $("#userChangeShippingAddress")
-    newShippingAddress = $("#newShippingAddress")
+    form = options.form
+    editButton = options.editButton
+    selectAddr = options.selectAddress
+    newAddrButton = options.newAddressButton
+    toggleShipAddress = options.toggleShipAddress
 
-    # catch HTML5 form validation errors in the shippingAddressForm, if this form is invisible
+    # catch HTML5 form validation errors in the form, if this form is invisible
     # such a validation error would lead to an unsubmittable form, but with no error message for the user
     # solution: if the form contains errors, show it
-    checkValidationShipping = ->
+    checkValidation = ->
       try # some old browser may not support checkValidity()
-        valid_shipping = shippingAddressForm.parents("form")[0].checkValidity()
-        showShippingAddressForm() unless valid_shipping
+        showForm() unless form.parents("form")[0].checkValidity()
       catch e # thus show the form for old browsers in every case
-        showShippingAddressForm()
+        showForm()
 
     # show the form for the separate shipping address
-    showShippingAddressForm = ->
-      shippingAddressForm.disableForm(false).show()
+    showForm = ->
+      form.disableForm(false).show()
       document.updateValidator()
-      shippingAddressText.hide()
-      userChangeShippingAddress.hide() # hide the button
+      editButton.hide() # hide the button
 
     # responds to the checkbox which determines if a separate shipping address should be used
     manageShippingAddress = ->
-      state = showShipAddress.is(':checked') # false if a separate shipping address should be used
-      shippingAddress.toggle !state
-      userChangeShippingAddress.toggle !state
-      shippingAddressForm.disableForm state
+      state = toggleShipAddress.is(':checked') # false if a separate shipping address should be used
+      $(toggleShipAddress.data("toggle")).toggle !state
+      editButton.toggle !state
+      form.disableForm state
       document.updateValidator()
-      unless state then checkValidationShipping()
+      unless state then checkValidation()
+
+    # reset the shipping address form
+    emptyForm = ->
+      form.find('input[type=text]').val('')
+      form.find('input[type=radio]').prop('checked', null)
+      form.find('select').children('option').prop('selected', null)
 
     # only execute if the current page is a page with a shipping address form
-    if showShipAddress.length then manageShippingAddress()
+    if toggleShipAddress.length then manageShippingAddress()
 
-    userChangeShippingAddress.bind 'click', ->
-      showShippingAddressForm()
+    editButton.bind 'click', ->
+      showForm()
       false
 
-    showShipAddress.bind 'change', ->
+    toggleShipAddress.bind 'change', ->
       manageShippingAddress()
-
-    newShippingAddress.bind 'click', (ev) ->
+      
+    newAddrButton.bind 'click', (ev) ->
+      emptyForm()
+      selectAddr.filter('[value=-1]').prop('checked', true).trigger 'change'
       ev.preventDefault()
-      userChangeShippingAddress.hide()
-      $('.z-delivery-addresses input[value=\'-1\']').attr('checked', true)
-      shippingAddressForm.find("input[type=text]").val("")
       false
 
-    shippingAddress.find("input[name=oxaddressid]").bind 'change', ->
+    # when selecting a new address, reload the page
+    selectAddr.bind 'change', (ev) ->
+      if $(ev.currentTarget).val() == "-1"
+        emptyForm()
+        showForm()
+        return false
+      form.hide()
+      # allow reloading even if the form is currently invalid
       $('form[data-toggle="roxid-validator"]').data("bs.validator").destroy()
       $("form[name='order'] input[name=cl]").val($("input[name=changeClass]").val())
       $("form[name='order'] input[name=fnc]").val("")
       $("form[name='order']").submit()
-
-

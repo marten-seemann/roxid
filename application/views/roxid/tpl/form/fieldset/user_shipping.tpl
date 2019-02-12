@@ -1,19 +1,21 @@
 [{if $oxcmp_user}]
     [{assign var="delivadr" value=$oxcmp_user->getSelectedAddress()}]
 [{/if}]
-<div class="form-horizontal">
-    <div class="form-group">
-        <label class="control-label col-sm-8">[{ oxmultilang ident="ADDRESSES" suffix="COLON" }]</label>
-        <div class="col-sm-16">
-            <input type="hidden" name="changeClass" value="[{$onChangeClass|default:'account_user'}]">
-            [{oxscript add="$(document).ready(function() { $(document).zShippingAddress(); });"}]
-            [{block name="form_user_shipping_address_select"}]
-                [{include file="form/fieldset/user_shipping_address_selector.tpl" showChangeButton=$showChangeButton}]
-            [{/block}]
-            <a href="" class="btn btn-default btn-sm" id="newShippingAddress">[{ oxmultilang ident="NEW_ADDRESS" }]</a>
-        </div>
-    </div>
-</div>
+
+<input type="hidden" name="changeClass" value="[{$onChangeClass|default:'account_user'}]">
+[{oxscript add="$(document).ready(function() { 
+    $(document).zShippingAddress({
+        form: $('#shippingAddressForm'),
+        editButton: $('#editShippingAddress'),
+        selectAddress: $('input[name=oxaddressid]'),
+        newAddressButton: $('#newAddress'),
+        toggleShipAddress: $('#showShipAddress'),
+    }); 
+});
+"}]
+[{block name="form_user_shipping_address_select"}]
+    [{include file="form/fieldset/user_shipping_address_selector.tpl" showChangeButton=$showChangeButton}]
+[{/block}]
 
 <div id="shippingAddressForm" class="z-new-shipping-address" [{if $delivadr }]style="display: none;"[{/if}]>
     [{block name="form_user_shipping_address_inner"}]

@@ -2451,26 +2451,31 @@ footer {
   }
 }
 
-
-.z-checkout-shipping-address {
-  margin-bottom: 40px;
-
-  .z-new-shipping-address {
-    margin-left: 10px;
-  }
-}
-
 .z-delivery-addresses {
   margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.z-new-delivery-address {
+  margin: 10px 5px;
+}
+
+.z-delivery-address {
+  width: 40%;
+  margin: 5px;  
+  border: 1px solid @border-color;
+
+  .panel-heading {
+    border-bottom-color: @panel-default-border;
+  }
 
   button {
-    @media @not-phone {
-      margin-top: 10px;
-    }
-    @media @phone {
-      margin-left: 20px;
-      margin-bottom: 5px;
-    }
+    margin-top: -5px;
+  }
+
+  &:not(.selected) button {
+    display: none;
   }
 }
 
