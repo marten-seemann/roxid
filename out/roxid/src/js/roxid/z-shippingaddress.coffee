@@ -12,10 +12,7 @@ $.fn.extend
     # such a validation error would lead to an unsubmittable form, but with no error message for the user
     # solution: if the form contains errors, show it
     checkValidation = ->
-      try # some old browser may not support checkValidity()
-        showForm() unless form.parents("form")[0].checkValidity()
-      catch e # thus show the form for old browsers in every case
-        showForm()
+      showForm() if form.find(":invalid").length > 0
 
     # show the form for the separate shipping address
     showForm = ->

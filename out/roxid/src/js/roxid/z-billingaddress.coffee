@@ -15,10 +15,7 @@ $.fn.extend
 
     # catch HTML5 form validation errors in the billing form, if this form is invisible
     checkValidation = ->
-      try # some old browser may not support checkValidity()
-        showForm() unless form.parents("form")[0].checkValidity()
-      catch e # thus show the form for old browsers in every case
-        showForm()
+      showForm() if form.find(":invalid").length > 0
 
     # Check if the form is valid when loading the site.
     # This might not be the case e.g. when new mandatory fields were added.
