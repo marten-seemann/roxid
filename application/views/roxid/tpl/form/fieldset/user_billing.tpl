@@ -191,7 +191,15 @@
     </div>
 [{/if}]
 
-[{*<li class="formNote">[{ oxmultilang ident="COMPLETE_MARKED_FIELDS" }]</li>*}]
+[{oxscript add="$(document).ready(function() {
+    $(document).zBillingAddress({
+        button: $('#userChangeAddress'),
+        form: $('#addressForm'),
+        text: $('#addressText'),
+    });
+});
+"}]
+
 [{if !$noFormSubmit}]
     <div class="form-group">
         <div class="col-sm-16">

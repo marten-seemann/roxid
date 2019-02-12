@@ -26,7 +26,7 @@
                             [{block name="user_checkout_billing_head"}]
                                 <legend>
                                     [{oxmultilang ident="BILLING_ADDRESS" }]
-                                    <button id="userChangeAddress" class="btn btn-default btn-sm" name="changeBillAddress" type="submit">[{$oViewConf->getRoxidIcon('edit')}] [{oxmultilang ident="CHANGE" }]</button>
+                                    <button id="userChangeAddress" class="btn btn-default btn-sm" name="changeBillAddress">[{$oViewConf->getRoxidIcon('edit')}] [{oxmultilang ident="CHANGE" }]</button>
                                 </legend>
                             [{/block}]
                             [{block name="user_checkout_billing_form"}]
