@@ -2,7 +2,7 @@
     <form class="form-horizontal" action="[{ $oViewConf->getSelfActionLink() }]" name="order" method="post" data-toggle="roxid-validator">
         [{assign var="aErrors" value=$oView->getFieldValidationErrors()}]
         <div class="row">
-            <div class="col-md-24">
+            <div class="col-md-16 col-lg-14">
                 <div>
                     [{ $oViewConf->getHiddenSid() }]
                     [{ $oViewConf->getNavFormParams() }]
@@ -40,7 +40,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-24">
+            <div class="col-md-16 col-lg-14">
                 [{block name="user_shipping_address"}]
                     <fieldset>
                         [{block name="user_shipping_address_head"}]
