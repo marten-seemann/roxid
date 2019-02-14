@@ -55,6 +55,6 @@
 </div>
 <div class="z-new-delivery-address">
     <input type="radio" name="oxaddressid" value="-1" style="display:none;"> 
-    <button id="newAddress" class="btn btn-default">[{ oxmultilang ident="NEW_ADDRESS" }]</button>
+    <button id="newAddress" class="btn btn-default" [{if $oxcmp_user->getUserAddresses()|count == 0}]style="display:none;"[{/if}]>[{ oxmultilang ident="NEW_ADDRESS" }]</button>
 </div>
 [{/if}]
