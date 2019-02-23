@@ -18,13 +18,11 @@ $.fn.extend
     showForm = ->
       form.disableForm(false).show()
       document.updateValidator()
-      editButton.hide() # hide the button
 
     # responds to the checkbox which determines if a separate shipping address should be used
     manageShippingAddress = ->
       state = toggleShipAddress.is(':checked') # false if a separate shipping address should be used
       $(toggleShipAddress.data("toggle")).toggle !state
-      editButton.toggle !state
       form.disableForm state
       document.updateValidator()
       unless state then checkValidation()

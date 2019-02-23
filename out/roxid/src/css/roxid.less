@@ -2455,6 +2455,10 @@ footer {
   margin-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
+
+  input[name="oxaddressid"]:not(:checked) + .z-delivery-address-actions {
+    display: none;
+  }
 }
 
 .z-new-delivery-address {
