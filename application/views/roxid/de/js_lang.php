@@ -24,4 +24,7 @@ $aLang = array(
   'BASKET_REMOVE_CANCEL'                      => "Abbrechen",
   'TO_BASKET_DISPLAY_BASKET'                  => "zum Warenkorb",
   'TO_BASKET_CONTINUE_SHOPPING'               => "Weiter einkaufen",
+  'DELETE_SHIPPING_ADDRESS_CONFIRMATION'      => 'Lieferadresse löschen?',
+  'DELETE_SHIPPING_ADDRESS'                   => 'Löschen',
+  'CANCEL'                                    => 'Abbrechen',
 );

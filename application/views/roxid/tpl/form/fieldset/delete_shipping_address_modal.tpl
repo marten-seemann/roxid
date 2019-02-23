@@ -4,9 +4,7 @@
     [{/if}]
 
     [{foreach from=$userAddresses item=shippingAddress name="shippingAdresses"}]
-        <form name="delete_shipping_address_modal_form_[{$shippingAddress->oxaddress__oxid->value}]"
-                action="[{$oViewConf->getSelfActionLink()}]"
-                method="post">
+        <form name="delete_shipping_address_modal_form_[{$shippingAddress->oxaddress__oxid->value}]" action="[{$oViewConf->getSelfActionLink()}]" method="post">
             <div class="hidden">
                 [{$oViewConf->getHiddenSid()}]
                 <input type="hidden" name="cl" value="[{$oViewConf->getActiveClassName()}]">
@@ -16,6 +14,3 @@
         </form>
     [{/foreach}]
 [{/block}]
-
-
-

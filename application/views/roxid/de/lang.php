@@ -217,7 +217,5 @@ $aLang = array(
 'DELETE_REVIEW_AND_RATING'                                    => 'Bewertung und Sterne-Rating löschen',
 'REVIEWS_NOT_AVAILABLE'                                       => 'Es liegen keine Bewertungen vor',
 'DELETE_REVIEW_CONFIRMATION_QUESTION'                         => 'Sind Sie sicher, dass Sie die Bewertung löschen wollen?',
-'DELETE_SHIPPING_ADDRESS'                                     => 'Löschen',
-'DELETE_SHIPPING_ADDRESS_CONFIRMATION'                        => 'Lieferadresse löschen?',
 'CHOOSE_DELIVERY'                                             => 'auswählen',
 );

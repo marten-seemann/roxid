@@ -18,4 +18,7 @@ $aLang = array(
   'BASKET_REMOVE_CANCEL'                      => "Cancel",
   'TO_BASKET_DISPLAY_BASKET'                  => "show basket",
   'TO_BASKET_CONTINUE_SHOPPING'               => "continue shopping",
+  'DELETE_SHIPPING_ADDRESS_CONFIRMATION'      => 'Delete shipping address?',
+  'DELETE_SHIPPING_ADDRESS'                   => 'Delete',
+  'CANCEL'                                    => 'Cancel',
 );

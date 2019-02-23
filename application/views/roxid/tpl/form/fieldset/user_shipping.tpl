@@ -7,6 +7,7 @@
     $(document).zShippingAddress({
         form: $('#shippingAddressForm'),
         editButton: $('#editShippingAddress'),
+        deleteButton: $('#delete-shipping-address-button'),
         selectAddress: $('input[name=oxaddressid]'),
         newAddressButton: $('#newAddress'),
         toggleShipAddress: $('#showShipAddress'),

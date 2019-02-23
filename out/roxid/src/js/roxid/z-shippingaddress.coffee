@@ -4,6 +4,7 @@ $.fn.extend
   zShippingAddress: (options) ->
     form = options.form
     editButton = options.editButton
+    deleteButton = options.deleteButton
     selectAddr = options.selectAddress
     newAddrButton = options.newAddressButton
     toggleShipAddress = options.toggleShipAddress
@@ -40,6 +41,24 @@ $.fn.extend
       showForm()
       false
 
+    deleteButton.bind 'click', (ev) ->
+      btn = this
+      ev.preventDefault()
+      bootbox.confirm
+        message: $lang.DELETE_SHIPPING_ADDRESS_CONFIRMATION
+        buttons:
+          confirm:
+            label: $lang.DELETE_SHIPPING_ADDRESS
+            className: 'btn-danger'
+          cancel:
+            label: $lang.CANCEL
+        callback: (result) ->
+          return unless result
+          addrID = $(btn).data("oxaddressid")
+          $("form[name='delete_shipping_address_modal_form_#{addrID}']").submit()
+          false
+      false
+
     toggleShipAddress.bind 'change', ->
       manageShippingAddress()
       
@@ -57,7 +76,7 @@ $.fn.extend
         return false
       form.hide()
       # allow reloading even if the form is currently invalid
-      $('form[data-toggle="roxid-validator"]').data("bs.validator").destroy()
+      $("form[data-toggle='roxid-validator']").data("bs.validator").destroy()
       $("form[name='order'] input[name=cl]").val($("input[name=changeClass]").val())
       $("form[name='order'] input[name=fnc]").val("")
       $("form[name='order']").submit()

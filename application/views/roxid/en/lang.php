@@ -151,7 +151,5 @@ $aLang = array(
 'DELETE_REVIEW_AND_RATING'                                   => 'Delete review and star rating',
 'REVIEWS_NOT_AVAILABLE'                                      => 'No reviews available',
 'DELETE_REVIEW_CONFIRMATION_QUESTION'                        => 'Are you sure you want to delete the review?',
-'DELETE_SHIPPING_ADDRESS'                                    => 'Delete',
-'DELETE_SHIPPING_ADDRESS_CONFIRMATION'                       => 'Delete shipping address?',
 'CHOOSE_DELIVERY'                                            => 'choose',
 );
