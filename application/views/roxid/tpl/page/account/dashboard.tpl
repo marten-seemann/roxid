@@ -65,7 +65,9 @@
                     </dl>
                 [{/if}]
                 [{block name="account_dashboard_delete_my_account"}]
-                    [{include file="page/account/inc/delete_account_button.tpl"}]
+                    [{if $oView->isUserAllowedToDeleteOwnAccount()}]
+                        [{include file="page/account/inc/delete_account_button.tpl"}]
+                    [{/if}]
                 [{/block}]
             [{/block}]
         </div>
