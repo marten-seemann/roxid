@@ -15,7 +15,7 @@
                         <legend>[{$oContent->oxcontents__oxtitle->value}]</legend>
                         <div class="checkbox agbConfirmation">
                             <label for="checkAgbTop">
-                                <input id="checkAgbTop" type="checkbox" name="ord_agb" value="1">
+                                <input id="checkAgbTop" type="checkbox" name="ord_agb" value="1" required>
                                 [{$oContent->oxcontents__oxcontent->value}]
                             </label>
                         </div>
@@ -36,7 +36,7 @@
                     [{oxifcontent ident="oxdownloadableproductsagreement" object="oContent"}]
                         <div id="noteForDownloadableArticles" class="checkbox agbConfirmation">
                             <label for="oxdownloadableproductsagreement">
-                                <input id="oxdownloadableproductsagreement" type="checkbox" name="oxdownloadableproductsagreement" value="1">
+                                <input id="oxdownloadableproductsagreement" type="checkbox" name="oxdownloadableproductsagreement" value="1" required>
                                 [{$oExplanationMarks->getMark('downloadable')}] [{$oContent->oxcontents__oxcontent->value}]
                             </label>
                         </div>
@@ -46,7 +46,7 @@
                     [{oxifcontent ident="oxserviceproductsagreement" object="oContent"}]
                         <div id="noteForIntangibleArticles" class="checkbox agbConfirmation">
                             <label for="oxserviceproductsagreement">
-                                <input id="oxserviceproductsagreement" type="checkbox" name="oxserviceproductsagreement" value="1">
+                                <input id="oxserviceproductsagreement" type="checkbox" name="oxserviceproductsagreement" value="1" required>
                                 [{$oExplanationMarks->getMark('intangible')}] [{$oContent->oxcontents__oxcontent->value}]
                             </label>
                         </div>
