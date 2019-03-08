@@ -30,21 +30,21 @@
             <label class="control-label col-sm-8 [{if $oView->isFieldRequired(oxaddress__oxfname)}]req[{/if}]">[{ oxmultilang ident="FIRST_NAME" suffix="COLON" }]</label>
             <div class="col-sm-16">
                 <input class="form-control" type="text" maxlength="255" name="deladr[oxaddress__oxfname]" value="[{if isset( $deladr.oxaddress__oxfname ) }][{ $deladr.oxaddress__oxfname }][{else}][{ $delivadr->oxaddress__oxfname->value }][{/if }]" [{if $oView->isFieldRequired(oxaddress__oxfname)}]required[{/if}]>
-                <div class="help-block with-errors"></div>
+                <div class="help-block with-errors">[{include file="message/inputvalidation.tpl" aErrors=$aErrors.oxaddress__oxfname}]</div>
             </div>
         </div>
         <div class="form-group [{if $aErrors.oxaddress__oxlname}]has-error[{/if}]">
             <label class="control-label col-sm-8 [{if $oView->isFieldRequired(oxaddress__oxlname)}]req[{/if}]">[{ oxmultilang ident="LAST_NAME" suffix="COLON" }]</label>
             <div class="col-sm-16">
                 <input class="form-control" type="text" maxlength="255" name="deladr[oxaddress__oxlname]" value="[{if isset( $deladr.oxaddress__oxlname ) }][{ $deladr.oxaddress__oxlname }][{else}][{ $delivadr->oxaddress__oxlname->value }][{/if }]" [{if $oView->isFieldRequired(oxaddress__oxlname)}]required[{/if}]>
-                <div class="help-block with-errors"></div>
+                <div class="help-block with-errors">[{include file="message/inputvalidation.tpl" aErrors=$aErrors.oxaddress__oxlname}]</div>
             </div>
         </div>
         <div class="form-group [{if $aErrors.oxaddress__oxcompany}]has-error[{/if}]">
             <label class="control-label col-sm-8 [{if $oView->isFieldRequired(oxaddress__oxcompany) }]req[{/if}]">[{ oxmultilang ident="COMPANY" suffix="COLON" }]</label>
             <div class="col-sm-16">
                 <input class="form-control" type="text" maxlength="255" name="deladr[oxaddress__oxcompany]" value="[{if isset( $deladr.oxaddress__oxcompany ) }][{ $deladr.oxaddress__oxcompany }][{else}][{ $delivadr->oxaddress__oxcompany->value }][{/if}]" [{if $oView->isFieldRequired(oxaddress__oxcompany) }]required[{/if}]>
-                <div class="help-block with-errors"></div>
+                <div class="help-block with-errors">[{include file="message/inputvalidation.tpl" aErrors=$aErrors.oxaddress__oxcompany}]</div>
             </div>
         </div>
         <div class="form-group [{if $aErrors.oxaddress__oxaddinfo}]has-error[{/if}]">
@@ -52,7 +52,7 @@
             <label class="control-label col-sm-8 [{if $_address_addinfo_tooltip}]tooltip[{/if}] [{if $oView->isFieldRequired(oxaddress__oxaddinfo) }]req[{/if}]" [{if $_address_addinfo_tooltip}]title="[{$_address_addinfo_tooltip}]"[{/if}] >[{ oxmultilang ident="ADDITIONAL_INFO" suffix="COLON" }]</label>
             <div class="col-sm-16">
                 <input class="form-control" type="text" maxlength="255" name="deladr[oxaddress__oxaddinfo]" value="[{if isset( $deladr.oxaddress__oxaddinfo ) }][{ $deladr.oxaddress__oxaddinfo }][{else}][{ $delivadr->oxaddress__oxaddinfo->value }][{/if }]" [{if $oView->isFieldRequired(oxaddress__oxaddinfo) }]required[{/if}]>
-                <div class="help-block with-errors"></div>
+                <div class="help-block with-errors">[{include file="message/inputvalidation.tpl" aErrors=$aErrors.oxaddress__oxaddinfo}]</div>
             </div>
         </div>
         <div class="form-group [{if $aErrors.oxaddress__oxstreet}]has-error[{/if}]">
@@ -66,7 +66,7 @@
                         <input class="form-control" type="text"  maxlength="16" name="deladr[oxaddress__oxstreetnr]" value="[{if isset( $deladr.oxaddress__oxstreetnr ) }][{ $deladr.oxaddress__oxstreetnr }][{else}][{ $delivadr->oxaddress__oxstreetnr->value }][{/if }]" [{if $oView->isFieldRequired(oxaddress__oxstreetnr) }]required[{/if}]>
                     </div>
                 </div>
-                <div class="help-block with-errors"></div>
+                <div class="help-block with-errors">[{include file="message/inputvalidation.tpl" aErrors=$aErrors.oxaddress__oxstreet}]</div>
             </div>
         </div>
         <div class="form-group [{if $aErrors.oxaddress__oxzip || $aErrors.oxaddress__oxcity}]has-error[{/if}]">
@@ -80,7 +80,10 @@
                         <input class="form-control" type="text" maxlength="255" name="deladr[oxaddress__oxcity]" value="[{if isset( $deladr.oxaddress__oxcity ) }][{ $deladr.oxaddress__oxcity }][{else}][{ $delivadr->oxaddress__oxcity->value }][{/if }]" [{if $oView->isFieldRequired(oxaddress__oxcity) }]required[{/if}]>
                     </div>
                 </div>
-                <div class="help-block with-errors"></div>
+                <div class="help-block with-errors">
+                    [{include file="message/inputvalidation.tpl" aErrors=$aErrors.oxaddress__oxzip}]
+                    [{include file="message/inputvalidation.tpl" aErrors=$aErrors.oxaddress__oxcity}]
+                </div>
             </div>
         </div>
         [{block name="form_user_shipping_country"}]
@@ -108,7 +111,8 @@
                             <option value="[{ $country->oxcountry__oxid->value }]" [{$sCountrySelect}]>[{ $country->oxcountry__oxtitle->value }]</option>
                         [{/foreach }]
                     </select>
-                    <div class="help-block with-errors"></div>
+                    <div class="help-block with-errors">[{include file="message/inputvalidation.tpl" aErrors=$aErrors.oxaddress__oxcountryid}]
+                        </div>
                 </div>
             </div>
             [{*
@@ -127,7 +131,7 @@
                 <label class="control-label col-sm-8 [{if $oView->isFieldRequired(oxaddress__oxfon) }]req[{/if}]">[{ oxmultilang ident="PHONE" suffix="COLON" }]</label>
                 <div class="col-sm-16">
                     <input class="form-control" type="text" maxlength="128" name="deladr[oxaddress__oxfon]" value="[{if isset( $deladr.oxaddress__oxfon ) }][{ $deladr.oxaddress__oxfon }][{else}][{ $delivadr->oxaddress__oxfon->value }][{/if }]" [{if $oView->isFieldRequired(oxaddress__oxfon) }]required[{/if}]>
-                    <div class="help-block with-errors"></div>
+                    <div class="help-block with-errors">[{include file="message/inputvalidation.tpl" aErrors=$aErrors.oxaddress__oxfon}]</div>
                 </div>
             </div>
         [{/if}]
@@ -136,7 +140,7 @@
                 <label class="control-label col-sm-8 [{if $oView->isFieldRequired(oxaddress__oxfax) }]req[{/if}]">[{ oxmultilang ident="FAX" suffix="COLON"}]</label>
                 <div class="col-sm-16">
                     <input class="form-control" type="text" maxlength="128" name="deladr[oxaddress__oxfax]" value="[{if isset( $deladr.oxaddress__oxfax ) }][{ $deladr.oxaddress__oxfax }][{else}][{ $delivadr->oxaddress__oxfax->value }][{/if }]" [{if $oView->isFieldRequired(oxaddress__oxfax) }]required[{/if}]>
-                    <div class="help-block with-errors"></div>
+                    <div class="help-block with-errors">[{include file="message/inputvalidation.tpl" aErrors=$aErrors.oxaddress__oxfax}]</div>
                 </div>
             </div>
         [{/if}]
