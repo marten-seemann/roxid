@@ -22,7 +22,6 @@ $.fn.extend
     checkValidation()
 
     # button to change the billing address
-    button.unbind()
     button.bind 'click', (ev) ->
       showForm()
       ev.preventDefault()
