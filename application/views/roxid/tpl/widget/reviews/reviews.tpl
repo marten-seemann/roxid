@@ -32,7 +32,10 @@
                             <input type="hidden" name="reviewuserhash" value="[{$sReviewUserHash}]">
                         [{/if}]
 
-                        <textarea rows="[{if $mobiledetails}]5[{else}]12[{/if}]" name="rvw_txt" class="form-control" required></textarea><br>
+                        [{block name="widget_reviews_form_fields"}]
+                            <textarea rows="[{if $mobiledetails}]5[{else}]12[{/if}]" name="rvw_txt" class="form-control" required></textarea>
+                        [{/block}]
+                        <br>
                         <button type="submit" class="btn btn-primary">[{$oViewConf->getRoxidIcon('save')}] [{oxmultilang ident="SAVE"}]</button>
                     </div>
                 </form>
