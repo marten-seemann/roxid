@@ -17,15 +17,14 @@
                             [{block name="user_billing_address_head"}]
                                 <legend>
                                     [{ oxmultilang ident="BILLING_ADDRESS" }]
-                                    <button id="userChangeAddress" class="btn btn-default btn-sm" name="changeBillAddress" type="submit" [{if !empty($aErrors)}]style="display: none;"[{/if}]>[{$oViewConf->getRoxidIcon('edit')}] [{ oxmultilang ident="PAGE_CHECKOUT_BASKET_CHANGE" }]</button>
+                                    <button id="userChangeAddress" class="btn btn-default btn-sm" name="changeBillAddress" type="submit">[{$oViewConf->getRoxidIcon('edit')}] [{ oxmultilang ident="PAGE_CHECKOUT_BASKET_CHANGE" }]</button>
                                 </legend>
                             [{/block}]
                             [{block name="user_billing_address_form"}]
-                                <div id="addressForm" [{if empty($aErrors)}]style="display: none;"[{/if}]>
+                                <div id="addressForm" style="display: none;">
                                     [{ include file="form/fieldset/user_email.tpl" }]
                                     [{ include file="form/fieldset/user_billing.tpl" noFormSubmit=true }]
                                 </div>
-                                [{oxscript add="$('#userChangeAddress').click( function() { $('#addressForm').disableForm(false).show(); $('#addressText').hide();return false;});"}]
                             [{/block}]
                             [{block name="user_billing_address_text"}]
                                 <div id="addressText">
@@ -59,7 +58,6 @@
                             [{if !$oView->showShipAddress() }]
                                 [{ oxscript add="$('#shippingAddressForm').disableForm(true);"}]
                             [{/if}]
-                            [{oxscript add="$('#showShipAddress').change( function() { var state = $(this).is(':not(:checked)'); $('#userChangeShippingAddress').toggle(state); $('#shippingAddress').disableForm(!state).toggle(state); });"}]
                         [{/block}]
                     </fieldset>
                 [{/block}]
