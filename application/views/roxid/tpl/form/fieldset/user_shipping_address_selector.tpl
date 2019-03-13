@@ -16,11 +16,7 @@
                 [{/if}]
             </div>
             <div class="panel-body">
-                [{if $address->oxaddress__oxcompany->value}][{$address->oxaddress__oxcompany->value}]<br>[{/if}]
-                <strong>[{$address->oxaddress__oxfname->value}] [{$address->oxaddress__oxlname->value}]</strong><br>
-                [{$address->oxaddress__oxstreet->value}] [{$address->oxaddress__oxstreetnr->value}]<br>
-                [{$address->oxaddress__oxzip->value}] [{$address->oxaddress__oxcity->value}]<br>
-                [{$address->oxaddress__oxcountry->value}]<br>
+                [{include file="widget/address/shipping_address.tpl" delivadr=$address}]
             </div>
         </div>
     [{/foreach}]
