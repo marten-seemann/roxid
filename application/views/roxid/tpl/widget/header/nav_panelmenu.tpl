@@ -4,32 +4,27 @@
 
 [{capture name="panelmenu_js" assign="panelmenu_js"}]
   var navbars = [];
-  var theme = '[{$oViewConf->getViewThemeParam('sMobileNavbarColortheme')}]';
-  var extensions = [ 'pageshadow', theme ];
+  var extensions = [ 'shadow-page' ];
 
   if('[{$oViewConf->getViewThemeParam('sMobileNavbarPageDim')}]' != 'false') {
     extensions.push('[{$oViewConf->getViewThemeParam('sMobileNavbarPageDim')}]');
   }
 
-  navbars.push({
-    position: 'top',
-    content: [ 'prev', 'title', 'close' ]
-  });
-
-  [{if $oViewConf->getViewThemeParam('blMobileNavbarShowShopName')}]
-    navbars.push({
-      position: 'bottom',
-      'content': [
-        '<div class=\'lastrow\'><a>[{ $oxcmp_shop->oxshops__oxname->value }]</a></div>'
-      ]
-    });
+  [{assign var="sMobileNavbarPosition" value=$oViewConf->getViewThemeParam('sMobileNavbarPosition')}]
+  [{if $sMobileNavbarPosition != "left"}]
+    extensions.push('position-[{$sMobileNavbarPosition}]')
   [{/if}]
 
-  [{if $oViewConf->getViewThemeParam('blMobileNavbarShowContact')}]
+  [{assign var="sMobileNavbarColortheme" value=$oViewConf->getViewThemeParam('sMobileNavbarColortheme')}]
+  [{if $sMobileNavbarColortheme != "theme-light"}]
+    extensions.push('[{$sMobileNavbarColortheme}]')
+  [{/if}]
+
+  [{if $oViewConf->getViewThemeParam('blMobileNavbarShowBasket')}]
     navbars.push({
       position: 'bottom',
       'content': [
-        '<div class=\'middlerow\'><a href=\'[{ oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=contact" }]\'>[{$oViewConf->getRoxidIcon('contact')}] [{ oxmultilang ident="CONTACT" }]</a></div>'
+        '<div class=\'middlerow\'><a href=\'[{ oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=basket" }]\' rel=\'nofollow\'>[{$oViewConf->getRoxidIcon('basket')}] [{ oxmultilang ident="CART" }] <span class=\'z-basket-itemcounter z-basket-itemcount badge badge-info\' [{if $oxcmp_basket->getItemsCount() == 0}]style="display:none;"[{/if}]>[{$oxcmp_basket->getItemsCount()}]</span></a></div>'
       ]
     });
   [{/if}]
@@ -43,22 +38,29 @@
     });
   [{/if}]
 
-  [{if $oViewConf->getViewThemeParam('blMobileNavbarShowBasket')}]
+  [{if $oViewConf->getViewThemeParam('blMobileNavbarShowContact')}]
     navbars.push({
       position: 'bottom',
       'content': [
-        '<div class=\'middlerow\'><a href=\'[{ oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=basket" }]\' rel=\'nofollow\'>[{$oViewConf->getRoxidIcon('basket')}] [{ oxmultilang ident="CART" }] <span class=\'z-basket-itemcounter z-basket-itemcount badge badge-info\' [{if $oxcmp_basket->getItemsCount() == 0}]style="display:none;"[{/if}]>[{$oxcmp_basket->getItemsCount()}]</span></a></div>'
+        '<div class=\'middlerow\'><a href=\'[{ oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=contact" }]\'>[{$oViewConf->getRoxidIcon('contact')}] [{ oxmultilang ident="CONTACT" }]</a></div>'
       ]
     });
   [{/if}]
 
-
-  [{assign var="sMobileNavbarPosition" value=$oViewConf->getViewThemeParam('sMobileNavbarPosition')"}]
+  [{if $oViewConf->getViewThemeParam('blMobileNavbarShowShopName')}]
+    navbars.push({
+      position: 'bottom',
+      'content': [
+        '<div class=\'lastrow\'><a>[{ $oxcmp_shop->oxshops__oxname->value }]</a></div>'
+      ]
+    });
+  [{/if}]
 
   $('#panelmenu').show();
   $('#panelmenu').find('.nav').removeClass('nav').removeClass('navbar-nav'); // remove Bootstrap styling
   $('#panelmenu').mmenu({
-    currentItem: true,
+    wrappers: [ 'bootstrap3' ],
+    setSelected: { current: true },
     counters: [{if $oViewConf->getViewThemeParam('blMobileNavbarShowCounter')}]true[{else}]false[{/if}],
     extensions: extensions,
     navbar: {
@@ -70,8 +72,6 @@
     transitionDuration: 200,
     offCanvas: {
       blockUI: true,
-      position: '[{$sMobileNavbarPosition}]',
-      zposition: '[{if $sMobileNavbarPosition == "left" || $sMobileNavbarPosition == "right"}]back[{else}]front[{/if}]'
     },
   });
 

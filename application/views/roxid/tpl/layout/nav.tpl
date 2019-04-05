@@ -18,7 +18,7 @@
         </a>
       </div>
       <div class="z-navbar-phone hidden-md hidden-lg">
-        <ul class="nav navbar-nav navbar-right pull-right">
+        <ul id="panel-menu" class="nav navbar-nav navbar-right pull-right">
           [{include file="widget/header/nav_mobile.tpl"}]
           [{include file="widget/header/nav_minibasket.tpl" minibasketDisplay="big"}]
         </ul>

@@ -1,14 +1,17 @@
 $transitionDuration: 0.25s;
 $mm_dimmedTextColor: rgba(#000, 0.6);
 
-// @import "../../../../bower_components/jQuery.mmenu/src/core/css/jquery.mmenu.all";
-@import "../../../../bower_components/jQuery.mmenu/src/core/css/jquery.mmenu";
-@import "../../../../bower_components/jQuery.mmenu/src/addons/css/jquery.mmenu.counters";
-@import "../../../../bower_components/jQuery.mmenu/src/addons/css/jquery.mmenu.iconpanels";
-@import "../../../../bower_components/jQuery.mmenu/src/addons/css/jquery.mmenu.navbars";
-@import "../../../../bower_components/jQuery.mmenu/src/extensions/css/jquery.mmenu.pageshadow";
-@import "../../../../bower_components/jQuery.mmenu/src/extensions/css/jquery.mmenu.positioning";
-@import "../../../../bower_components/jQuery.mmenu/src/extensions/css/jquery.mmenu.pagedim";
+@import "../../../../bower_components/jQuery.mmenu/src/core/oncanvas/jquery.mmenu.oncanvas";
+@import "../../../../bower_components/jQuery.mmenu/src/core/offcanvas/jquery.mmenu.offcanvas";
+@import "../../../../bower_components/jQuery.mmenu/src/core/screenreader/jquery.mmenu.screenreader";
+@import "../../../../bower_components/jQuery.mmenu/src/addons/counters/jquery.mmenu.counters";
+@import "../../../../bower_components/jQuery.mmenu/src/addons/setselected/jquery.mmenu.setselected";
+@import "../../../../bower_components/jQuery.mmenu/src/addons/iconpanels/jquery.mmenu.iconpanels";
+@import "../../../../bower_components/jQuery.mmenu/src/addons/navbars/jquery.mmenu.navbars";
+@import "../../../../bower_components/jQuery.mmenu/src/extensions/shadows/jquery.mmenu.shadows";
+@import "../../../../bower_components/jQuery.mmenu/src/extensions/positioning/jquery.mmenu.positioning";
+@import "../../../../bower_components/jQuery.mmenu/src/extensions/pagedim/jquery.mmenu.pagedim";
+@import "../../../../bower_components/jQuery.mmenu/src/extensions/themes/jquery.mmenu.themes";
 
 
 html {
@@ -36,14 +39,17 @@ html {
   }
 }
 
+.mm-listitem .fa.fa-caret-down {
+  display: none;
+}
+
 .mm-menu {
-  > .mm-navbar-bottom {
-    text-align: left;
-
-    > div {
-      padding-left: ($mm_listitemPadding + $mm_padding);
+  > .mm-navbars_bottom {
+    .mm-navbar {
+      text-align: left;
+      padding-left: $mm_listitemIndent;
     }
-
+    
     .lastrow {
       border-top: 1px solid $mm_borderColor;
       text-align: center

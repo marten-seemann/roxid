@@ -31,12 +31,15 @@ module.exports = (grunt, options) ->
   ]
 
   mmenu = [
-    '<%= paths.bower %>/jQuery.mmenu/dist/core/js/jquery.mmenu.min.js'
-    '<%= paths.bower %>/jQuery.mmenu/dist/addons/js/jquery.mmenu.offcanvas.min.js'
-    '<%= paths.bower %>/jQuery.mmenu/dist/addons/js/jquery.mmenu.navbars.min.js'
-    '<%= paths.bower %>/jQuery.mmenu/dist/addons/js/jquery.mmenu.counters.min.js'
-    '<%= paths.bower %>/jQuery.mmenu/dist/addons/js/jquery.mmenu.iconpanels.min.js'
-    '<%= paths.bower %>/jQuery.mmenu/dist/3rdparty/addons/js/jquery.mmenu.currentitem.min.js'
+    '<%= paths.bower %>/jQuery.mmenu/dist/core/oncanvas/jquery.mmenu.oncanvas.js'
+    '<%= paths.bower %>/jQuery.mmenu/dist/core/offcanvas/jquery.mmenu.offcanvas.js'
+    '<%= paths.bower %>/jQuery.mmenu/dist/core/scrollbugfix/jquery.mmenu.scrollbugfix.js'
+    '<%= paths.bower %>/jQuery.mmenu/dist/wrappers/bootstrap/jquery.mmenu.bootstrap3.js'
+    '<%= paths.bower %>/jQuery.mmenu/dist/addons/navbars/jquery.mmenu.navbars.js'
+    '<%= paths.bower %>/jQuery.mmenu/dist/addons/navbars/_*.js'
+    '<%= paths.bower %>/jQuery.mmenu/dist/addons/setselected/jquery.mmenu.setselected.js'
+    '<%= paths.bower %>/jQuery.mmenu/dist/addons/counters/jquery.mmenu.counters.js'
+    '<%= paths.bower %>/jQuery.mmenu/dist/addons/iconpanels/jquery.mmenu.iconpanels.js'
   ]
 
   noty = [
