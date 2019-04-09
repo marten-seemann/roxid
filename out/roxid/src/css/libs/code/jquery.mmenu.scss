@@ -39,6 +39,11 @@ html {
   }
 }
 
+// see https://github.com/FrDH/jQuery.mmenu/issues/898
+body.modal-open .mm-slideout {
+  z-index: unset;
+}
+
 .mm-listitem .fa.fa-caret-down {
   display: none;
 }
