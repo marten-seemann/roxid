@@ -33,7 +33,9 @@
                         [{/if}]
 
                         [{block name="widget_reviews_form_fields"}]
-                            <textarea rows="[{if $mobiledetails}]5[{else}]12[{/if}]" name="rvw_txt" class="form-control" required></textarea>
+                            <div class="form-group">
+                                <textarea rows="[{if $mobiledetails}]5[{else}]12[{/if}]" name="rvw_txt" class="form-control" required></textarea>
+                            </div>
                         [{/block}]
                         <br>
                         <button type="submit" class="btn btn-primary">[{$oViewConf->getRoxidIcon('save')}] [{oxmultilang ident="SAVE"}]</button>

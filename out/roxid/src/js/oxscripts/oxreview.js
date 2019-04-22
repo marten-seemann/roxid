@@ -41,6 +41,7 @@
             $(par).find(options.reviewButton).click(function(){
                 $(par).find(options.reviewForm).slideToggle();
                 $(par).find(options.reviewButton).hide();
+                document.updateValidator();
                 return false;
             });
         }

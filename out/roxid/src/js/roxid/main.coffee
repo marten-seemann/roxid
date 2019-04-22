@@ -11,7 +11,7 @@ $ ->
 
   document.updateValidator = ->
     forms = $('form[data-toggle="roxid-validator"]')
-    forms.data("bs.validator").update() if forms.length > 0
+    forms.validator 'update' if forms.length > 0
 
   document.startValidator()
 
