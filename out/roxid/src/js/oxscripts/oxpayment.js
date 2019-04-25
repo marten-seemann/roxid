@@ -1,3 +1,5 @@
+// MODIFIED FOR ROXID ///////////////
+
 /**
  *    This file is part of OXID eShop Community Edition.
  *
@@ -31,6 +33,7 @@
             $("dl dt input[type=radio]", el).click(function(){
                 $("dd", el).hide().find("input, select, textarea").attr("disabled", "disabled");
                 $(this).parents("dl").children("dd").toggle().find("input, select, textarea").removeAttr("disabled");
+                document.updateValidator();
             });
         }
     }
