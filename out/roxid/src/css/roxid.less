@@ -2466,9 +2466,16 @@ footer {
 }
 
 .z-delivery-address {
-  width: 40%;
-  margin: 5px;  
+  width: 49%;  
   border: 1px solid @border-color;
+
+  &:nth-child(even) {
+    margin-left: 1%;
+  }
+
+  &:nth-child(odd) {
+    margin-right: 1%;
+  }
 
   .panel-heading {
     border-bottom-color: @panel-default-border;
