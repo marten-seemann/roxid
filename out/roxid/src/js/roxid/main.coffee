@@ -20,6 +20,7 @@ $ ->
     $(event.currentTarget).parents('li').first().toggleClass 'exp-js'
     false
 
+  $('.z-popup').zPopup()
 
   # initialize owlCarousels
   document.initOwlCarousels = ->

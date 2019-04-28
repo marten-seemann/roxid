@@ -2628,6 +2628,53 @@ footer {
   }
 }
 
+.z-popup-dialog {
+  .modal-dialog {
+    height: 90%;
+
+    @media @not-phone {
+      width: 90%;
+    }
+  }
+
+  @media @not-phone {
+    .modal-content, .modal-body {
+      height: 100%;
+    }
+  }
+  
+  .bootbox-body {
+    height: 100%;
+  }
+
+  .modal-footer {
+    display: none;
+  }
+
+  .loader {
+    width: 100%;
+    height: 100px;
+    margin-top: 30px;
+    background: url(../../img/loading.gif) no-repeat center center;
+    background-size: 45px;
+
+    @media @phone {
+      margin-top: 15px;
+    }
+  }
+
+  iframe {
+    display: none;
+    border: 0;
+    width: 100%;
+    height: 100%;
+
+    @media @not-phone {
+      padding: 0 10px 20px 0;
+    }
+  }
+}
+
 #z-map {
   width: 100%;
   height: 450px;
