@@ -32,7 +32,8 @@ $.fn.extend
     emptyForm = ->
       form.find('input[type=text]').val('')
       form.find('input[type=radio]').prop('checked', null)
-      form.find('select').children('option').prop('selected', null)
+      form.find('select option').prop('selected', null)
+      form.find('select option[value=\'\']').prop('selected', 'selected')
 
     # only execute if the current page is a page with a shipping address form
     if toggleShipAddress.length then manageShippingAddress()
