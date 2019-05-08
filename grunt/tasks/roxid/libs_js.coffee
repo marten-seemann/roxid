@@ -19,7 +19,7 @@ module.exports = (grunt, options) ->
   if opts.bootstrap.transition then bootstrap.push '<%= paths.bower %>/bootstrap/js/transition.js'
 
   bootbox = [
-    '<%= paths.bower %>/bootbox.js/bootbox.js'
+    '<%= paths.bower %>/bootbox.js/src/bootbox.js'
   ]
 
   dotdotdot = [
