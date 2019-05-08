@@ -15,6 +15,11 @@ $ ->
 
   document.startValidator()
 
+  # Update the validator after a modal is shown.
+  # Required to make the validator work in the password forgotten modal.
+  $(document).on 'shown.bs.modal', ->
+    document.updateValidator()
+
   # make the category tree interactive
   $('.z-category-tree .icon').on 'click', (event) ->
     $(event.currentTarget).parents('li').first().toggleClass 'exp-js'
