@@ -13,6 +13,6 @@ $aTheme = array(
     'title'        => '<span style=\'letter-spacing:0.07em\'><strong style=\'color: #84AA4C;\'>R</strong>OXID</span> One',
     'description'  => 'a responsive OXID template',
     'thumbnail'    => 'theme.png',
-    'version'      => '3.4.5',
+    'version'      => '4.0.0',
     'author'       => 'Marten Seemann',
 );
