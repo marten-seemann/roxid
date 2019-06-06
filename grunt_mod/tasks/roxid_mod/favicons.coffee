@@ -5,6 +5,7 @@ module.exports.tasks =
     options:
       trueColor: true
       appleTouchBackgroundColor: 'white'
+      androidHomescreen: true
     icons:
       src: '<%= paths.src.favicons %>/favicon.png'
       dest: '<%= paths.dest.favicons %>'
