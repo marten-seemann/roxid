@@ -40,8 +40,9 @@ html {
 }
 
 // see https://github.com/FrDH/jQuery.mmenu/issues/898
+// Use inherit instead of unset, since IE11 doesn't seem to understand unset.
 body.modal-open .mm-slideout {
-  z-index: unset;
+  z-index: inherit;
 }
 
 .mm-listitem .fa.fa-caret-down {
