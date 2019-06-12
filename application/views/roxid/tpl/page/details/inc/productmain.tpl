@@ -256,11 +256,11 @@
                                 </div>
                             [{/if}]
                             [{if $oDetailsProduct->loadAmountPriceInfo()}]
-                                <div class="z-product-amountprice">
-                                    [{block name="details_productmain_amountprice"}]
+                                [{block name="details_productmain_amountprice"}]
+                                    <div class="z-product-amountprice">
                                         [{include file="page/details/inc/amountprice.tpl"}]
-                                    [{/block}]
-                                </div>
+                                    </div>
+                                [{/block}]
                             [{/if}]
                         </div>
                     [{/oxhasrights}]
