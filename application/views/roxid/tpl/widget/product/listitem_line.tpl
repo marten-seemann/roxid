@@ -53,57 +53,6 @@
             <input type="hidden" name="anid" value="[{ $product->oxarticles__oxnid->value }]">
         [{/if}]
 
-        [{capture name="priceinfo" assign="priceinfo"}]
-            [{block name="widget_product_listitem_line_price"}]
-                [{oxhasrights ident="SHOWARTICLEPRICE"}]
-                    [{block name="widget_product_listitem_line_price_value"}]
-                        [{*
-                        <div class="z-product-amountprice hidden-xs">
-                            [{if $product->loadAmountPriceInfo()}]
-                                [{include file="page/details/inc/priceinfo.tpl" oDetailsProduct=$product}]
-                            [{/if}]
-                        </div>
-                        *}]
-                        <div class="z-productprices">
-                            [{if $product->getTPrice()}]
-                                <div class="z-oldprice">
-                                    [{oxmultilang ident="WIDGET_PRODUCT_PRODUCT_REDUCEDFROM"}] <del>[{$product->getFTPrice()}] [{$currency->sign}]</del>
-                                </div>
-                            [{/if}]
-                            <div class="z-productprice">
-                                <span>
-                                    [{if $product->isRangePrice()}]
-                                                    [{ oxmultilang ident="PRICE_FROM" }]
-                                                    [{if !$product->isParentNotBuyable() }]
-                                                        [{ $product->getFMinPrice() }]
-                                                    [{else}]
-                                                        [{ $product->getFVarMinPrice() }]
-                                                    [{/if}]
-                                            [{else}]
-                                                    [{if !$product->isParentNotBuyable() }]
-                                                        [{ $product->getFPrice() }]
-                                                    [{else}]
-                                                        [{ $product->getFVarMinPrice() }]
-                                                    [{/if}]
-                                            [{/if}]
-                                </span> [{ $currency->sign}][{if $oView->isVatIncluded() }][{if !($product->hasMdVariants() || ($oViewConf->showSelectListsInList() && $product->getSelections(1)) || $product->getVariants())}]<span class="z-vat-included">*</span>[{/if}][{/if}]
-                            </div>
-                        </div>
-                    [{/block}]
-
-                    [{if $product->getUnitPrice()}]
-                        <div id="productPricePerUnit_[{$iIndex}]" class="z-priceperunit">
-                            [{$product->getUnitQuantity()}] [{$product->getUnitName()}] | [{oxprice price=$product->getUnitPrice() currency=$oView->getActCurrency() }]/[{$product->getUnitName()}]
-                        </div>
-                    [{elseif $product->oxarticles__oxweight->value  }]
-                        <div id="productPricePerUnit_[{$iIndex}]" class="z-priceperunit">
-                            <span title="weight">[{ oxmultilang ident="WEIGHT" suffix="COLON" }]</span>
-                            <span class="value">[{ $product->oxarticles__oxweight->value }] [{ oxmultilang ident="KG" }]</span>
-                        </div>
-                    [{/if}]
-                [{/oxhasrights}]
-            [{/block}]
-        [{/capture}]
         <div class="row">
             [{block name="widget_product_listitem_line_picturebox"}]
                 <div class="col-xs-7 col-sm-6">
@@ -171,7 +120,55 @@
 
 
             <div class="col-xs-6 col-sm-8 z-productline-functions">
-                [{$priceinfo}]
+                [{block name="widget_product_listitem_line_price"}]
+                    [{oxhasrights ident="SHOWARTICLEPRICE"}]
+                        [{block name="widget_product_listitem_line_price_value"}]
+                            [{*
+                            <div class="z-product-amountprice hidden-xs">
+                                [{if $product->loadAmountPriceInfo()}]
+                                    [{include file="page/details/inc/priceinfo.tpl" oDetailsProduct=$product}]
+                                [{/if}]
+                            </div>
+                            *}]
+                            <div class="z-productprices">
+                                [{if $product->getTPrice()}]
+                                    <div class="z-oldprice">
+                                        [{oxmultilang ident="WIDGET_PRODUCT_PRODUCT_REDUCEDFROM"}] <del>[{$product->getFTPrice()}] [{$currency->sign}]</del>
+                                    </div>
+                                [{/if}]
+                                <div class="z-productprice">
+                                    <span>
+                                        [{if $product->isRangePrice()}]
+                                                        [{ oxmultilang ident="PRICE_FROM" }]
+                                                        [{if !$product->isParentNotBuyable() }]
+                                                            [{ $product->getFMinPrice() }]
+                                                        [{else}]
+                                                            [{ $product->getFVarMinPrice() }]
+                                                        [{/if}]
+                                                [{else}]
+                                                        [{if !$product->isParentNotBuyable() }]
+                                                            [{ $product->getFPrice() }]
+                                                        [{else}]
+                                                            [{ $product->getFVarMinPrice() }]
+                                                        [{/if}]
+                                                [{/if}]
+                                    </span> [{ $currency->sign}][{if $oView->isVatIncluded() }][{if !($product->hasMdVariants() || ($oViewConf->showSelectListsInList() && $product->getSelections(1)) || $product->getVariants())}]<span class="z-vat-included">*</span>[{/if}][{/if}]
+                                </div>
+                            </div>
+                        [{/block}]
+
+                        [{if $product->getUnitPrice()}]
+                            <div id="productPricePerUnit_[{$iIndex}]" class="z-priceperunit">
+                                [{$product->getUnitQuantity()}] [{$product->getUnitName()}] | [{oxprice price=$product->getUnitPrice() currency=$oView->getActCurrency() }]/[{$product->getUnitName()}]
+                            </div>
+                        [{elseif $product->oxarticles__oxweight->value  }]
+                            <div id="productPricePerUnit_[{$iIndex}]" class="z-priceperunit">
+                                <span title="weight">[{ oxmultilang ident="WEIGHT" suffix="COLON" }]</span>
+                                <span class="value">[{ $product->oxarticles__oxweight->value }] [{ oxmultilang ident="KG" }]</span>
+                            </div>
+                        [{/if}]
+                    [{/oxhasrights}]
+                [{/block}]
                 <div class="z-productlist-buttons hidden-xs">
                     <div class="z-product-compare pull-right">
                         [{if $oViewConf->getShowCompareList()}]
