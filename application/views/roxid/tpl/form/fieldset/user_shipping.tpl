@@ -145,10 +145,10 @@
             </div>
         [{/if}]
     [{/block}]
+
+    [{if !$noFormSubmit}]
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary col-sm-offset-8" name="save">[{ oxmultilang ident="SAVE" }]</button>
+        </div>
+    [{/if}]
 </div>
-
-
-[{if !$noFormSubmit}]
-    <p>[{ oxmultilang ident="COMPLETE_MARKED_FIELDS" }]</p>
-    <button id="accUserSaveBottom" type="submit" class="btn btn-primary" name="save">[{ oxmultilang ident="SAVE" }]</button>
-[{/if}]

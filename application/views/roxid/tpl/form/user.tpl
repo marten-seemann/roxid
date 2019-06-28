@@ -48,7 +48,7 @@
 
                     [{block name="user_shipping_address_form"}]
                         <div id="shippingAddress" [{if !$oView->showShipAddress()}]style="display: none;" [{/if}]>
-                            [{ include file="form/fieldset/user_shipping.tpl" noFormSubmit=true showChangeButton=true}]
+                            [{ include file="form/fieldset/user_shipping.tpl" showChangeButton=true}]
                         </div>
                         [{if !$oView->showShipAddress() }]
                             [{ oxscript add="$('#shippingAddressForm').disableForm(true);"}]
@@ -56,8 +56,6 @@
                     [{/block}]
                 </fieldset>
             [{/block}]
-
-            <button id="accUserSaveTop" class="btn btn-primary" name="userform" type="submit">[{$oViewConf->getRoxidIcon('save')}] [{ oxmultilang ident="SAVE" }]</button>
         [{/block}]
     </form>
     [{include file="form/fieldset/delete_shipping_address_modal.tpl"}]
