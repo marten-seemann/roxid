@@ -2456,26 +2456,35 @@ footer {
   display: flex;
   flex-wrap: wrap;
 
+  .make-row(@shipping-address-selector-padding);
+
+  > div {
+    .make-xs-column((24 / 2), @shipping-address-selector-padding);
+    .make-sm-column((24 / 3), @shipping-address-selector-padding);
+    .make-lg-column((24 / 4), @shipping-address-selector-padding);
+    display: flex;
+    flex-direction: column;
+  }
+  
   input[name="oxaddressid"]:not(:checked) + .z-delivery-address-actions {
     display: none;
   }
 }
 
+.z-checkout-shipping-address {
+  .z-delivery-addresses > div {
+    .make-xs-column((24 / 2), @shipping-address-selector-padding);
+  }
+}
+
 .z-new-delivery-address {
-  margin: 10px 5px;
+  margin: 10px 0;
 }
 
 .z-delivery-address {
-  width: 49%;  
+  flex: 1;
   border: 1px solid @border-color;
-
-  &:nth-child(even) {
-    margin-left: 1%;
-  }
-
-  &:nth-child(odd) {
-    margin-right: 1%;
-  }
+  margin-bottom: @shipping-address-selector-padding;
 
   .panel-heading {
     border-bottom-color: @panel-default-border;
