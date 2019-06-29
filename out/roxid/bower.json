@@ -21,6 +21,7 @@
     "bootstrap": "~3.3.7",
     "bootbox.js": "bootbox#~5.1.0",
     "jQuery.dotdotdot": "^1.8.1",
+    "jquery.scrollTo": "~2.1.2",
     "jquery-ui": "~1.11.4",
     "bootstrap-validator": "~0.11.5",
     "photoswipe": "~4.1.1",

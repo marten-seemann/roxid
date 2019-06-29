@@ -18,6 +18,7 @@ $.fn.extend
     # show the form for the separate shipping address
     showForm = ->
       form.disableForm(false).show()
+      $.scrollTo(form.offset().top - 80, 500)
       document.updateValidator()
 
     # responds to the checkbox which determines if a separate shipping address should be used

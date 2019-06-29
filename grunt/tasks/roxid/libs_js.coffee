@@ -57,6 +57,7 @@ module.exports = (grunt, options) ->
     '<%= paths.bower %>/jquery/dist/jquery.js'
     '<%= paths.bower %>/jquery-ui/ui/core.js'
     '<%= paths.bower %>/jquery-ui/ui/widget.js'
+    '<%= paths.bower %>/jquery.scrollTo/jquery.scrollTo.js'
     '<%= paths.bower %>/jquery.cookie/jquery.cookie.js'
     '<%= paths.bower %>/rateit/dist/jquery.rateit.js'
     '<%= paths.src.js %>/oxscripts/ox*.js'
